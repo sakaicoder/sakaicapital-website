@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sakai Capital | Contact</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    .menu-link{font-family:"Arial Black",Arial,sans-serif;color:#113758;text-transform:uppercase;}
+    @media (min-width:768px){
+      .menu-link{position:relative;}
+      .menu-link::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#113758;transition:width .3s ease;}
+      .menu-link:hover::after{width:100%;}
+    }
+    @media (hover:none){
+      .menu-link::after{display:none;}
+      .menu-link:active{border-bottom:2px solid #113758;}
+    }
+    #menuOverlay{height:0;pointer-events:none;z-index:9999;}
+    #menuOverlay.open{height:100vh;pointer-events:auto;}
+    body.page-enter{opacity:0;transform:translateY(50px);}
+    body.page-exit{opacity:0!important;transform:translateY(-50px)!important;transition:all .4s ease;}
+    @media (prefers-reduced-motion: reduce){
+      [data-aos]{opacity:1!important;transform:none!important;transition:none!important;}
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 page-enter">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow h-20 flex items-center justify-between px-4">
+    <a href="index.html" class="h-full flex items-center">
+      <img src="assets/img/logo.png" alt="Sakai Capital logo" class="h-12 object-contain">
+    </a>
+    <button id="menuToggle" class="p-3 focus:outline-none" aria-label="Open menu">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay" class="fixed inset-0 bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
+    <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl">✕</button>
+    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-6xl font-black tracking-wide">
+      <a href="index.html"    class="menu-link">Home</a>
+      <a href="team.html"     class="menu-link">Our Team</a>
+      <a href="approach.html" class="menu-link">Our Approach</a>
+      <a href="contact.html"  class="menu-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative h-[40vh] -mt-20 overflow-hidden">
+    <video id="heroVideo"
+           src="assets/video/hero-index.mp4"
+           autoplay muted loop playsinline preload="auto"
+           class="absolute inset-0 w-full h-full object-cover">
+    </video>
+    <div class="absolute top-20 inset-x-0 bottom-0 bg-black/60 flex items-center justify-center">
+      <div class="text-center text-white px-6" data-aos="fade-up">
+        <h1 class="font-black uppercase text-4xl sm:text-5xl md:text-6xl leading-tight"
+            style="font-family:'Arial Black',Arial,sans-serif; color:#ffffff;">
+          Get in touch
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Intro -->
+  <section class="container mx-auto px-6 py-16" data-aos="fade-up">
+    <div class="max-w-2xl mx-auto space-y-6 text-gray-800">
+      <p class="text-lg" style=color:#113758;">
+        If you're a business owner or broker, please reach out to <a href="mailto:info@sakaicapital.com" class="underline">info@sakaicapital.com</a><br>
+        For all questions on recruiting, please reach out to <a href="mailto:recruiting@sakaicapital.com" class="underline">recruiting@sakaicapital.com</a><br><br>
+        You can also use the form below to get in touch:
+      </p>
+
+      <!-- AJAX Contact Form -->
+      <div id="contactWrapper">
+        <form id="contactForm"
+              action="https://formsubmit.co/ajax/ee5093bb8fdc5101521f06c68c005a6f"
+              method="POST"
+              class="space-y-4">
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text"   name="name"    placeholder="Name"    class="w-full border rounded px-3 py-2" required />
+          <input type="email"  name="email"   placeholder="Email"   class="w-full border rounded px-3 py-2" required />
+          <textarea name="message" placeholder="Message" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+          <button type="submit" class="w-full bg-[#113758] text-white py-2 rounded hover:opacity-90">
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="siteFooter" class="bg-[#113758] text-white py-16">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+      <nav class="space-y-3 text-sm uppercase tracking-wide">
+        <a href="index.html"    class="block hover:underline">Home</a>
+        <a href="team.html"     class="block hover:underline">Our Team</a>
+        <a href="approach.html" class="block hover:underline">Our Approach</a>
+        <a href="contact.html"  class="block hover:underline">Contact</a>
+      </nav>
+      <div class="space-y-4">
+        <p class="font-semibold text-lg">Sakai Capital LLC</p>
+        <a href="https://www.linkedin.com/company/sakai-capital" target="_blank">
+          <img src="assets/img/LinkedIn.png" alt="LinkedIn" class="h-7 w-7">
+        </a>
+      </div>
+      <div class="text-right md:text-left md:ml-auto space-y-4">
+        <div class="w-48 h-24 flex items-center justify-center overflow-hidden">
+          <img src="assets/img/footer-logo.png" alt="Footer logo" class="object-contain max-w-full max-h-full" />
+        </div>
+        <p class="text-xs opacity-80">&copy; Sakai Capital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      requestAnimationFrame(() => body.classList.remove('page-enter'));
+
+      // Hero autoplay
+      const hv = document.getElementById('heroVideo');
+      if (hv) {
+        const tryPlay = () => hv.play().catch(() => {});
+        tryPlay();
+        document.addEventListener('touchstart', tryPlay, { once: true });
+      }
+
+      // Menu toggle
+      const menuToggle = document.getElementById('menuToggle');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const closeMenu = document.getElementById('closeMenu');
+      const links = menuOverlay.querySelectorAll('a');
+      const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
+      const toggleMenu = () => {
+        const open = menuOverlay.classList.toggle('open');
+        lockScroll(open);
+      };
+      menuToggle.addEventListener('click', toggleMenu);
+      closeMenu.addEventListener('click', toggleMenu);
+      links.forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        const href = a.href;
+        body.classList.add('page-exit');
+        if (menuOverlay.classList.contains('open')) toggleMenu();
+        setTimeout(() => window.location.href = href, 400);
+      }));
+
+      // AJAX form submission
+      const form = document.getElementById('contactForm');
+      const wrapper = document.getElementById('contactWrapper');
+      if (form) {
+        form.addEventListener('submit', async e => {
+          e.preventDefault();
+          const data = new FormData(form);
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (!res.ok) throw new Error('Network error');
+            wrapper.innerHTML = `
+              <div class="text-center py-8">
+                <h4 class="text-xl font-semibold mb-2">Thank you!</h4>
+                <p>Thanks for reaching out!</p>
+              </div>`;
+          } catch {
+            wrapper.innerHTML = `
+              <div class="text-center py-8">
+                <h4 class="text-xl font-semibold mb-2">Oops!</h4>
+                <p>Please email us directly at <a href="mailto:info@sakaicapital.com" class="underline">info@sakaicapital.com</a>.</p>
+              </div>`;
+          }
+        });
+      }
+
+      // Init AOS
+      AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+    });
+  </script>
+</body>
+</html>

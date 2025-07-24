@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakai Capital | Search Fund</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    .menu-link { font-family:"Arial Black",Arial,sans-serif; color:#113758; text-transform:uppercase; }
+    @media (min-width:768px){
+      .menu-link { position:relative; }
+      .menu-link::after {
+        content:""; position:absolute; left:0; bottom:-4px;
+        height:2px; width:0; background:#113758; transition:width .3s ease;
+      }
+      .menu-link:hover::after { width:100%; }
+    }
+    @media (hover:none){
+      .menu-link::after { display:none; }
+      .menu-link:active { border-bottom:2px solid #113758; }
+    }
+    .headline { font-family:"Arial Black",Arial,sans-serif; color:#113758; }
+    #menuOverlay { height:0; pointer-events:none; z-index:9999; }
+    #menuOverlay.open { height:100vh; pointer-events:auto; }
+    #contactPanel { transform:translateY(100%); opacity:0; pointer-events:none; }
+    #contactPanel.open { transform:translateY(0); opacity:1; pointer-events:auto; }
+    body.page-enter { opacity:0; transform:translateY(50px); }
+    body.page-exit { opacity:0!important; transform:translateY(-50px)!important; transition:all .4s ease; }
+    @media (prefers-reduced-motion: reduce){
+      [data-aos] { opacity:1!important; transform:none!important; transition:none!important; }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 page-enter">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow h-20 flex items-center justify-between px-4">
+    <a href="index.html" class="flex-shrink-0 h-full flex items-center">
+      <img src="assets/img/logo.png" alt="Sakai Capital logo" class="h-12 w-auto object-contain" />
+    </a>
+    <button id="menuToggle" aria-label="Open menu" class="p-3 focus:outline-none">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay" class="fixed inset-0 bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
+    <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl" aria-label="Close menu">✕</button>
+    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-6xl font-black tracking-wide">
+      <a href="index.html"    class="menu-link">Home</a>
+      <a href="team.html"     class="menu-link">Our Team</a>
+      <a href="approach.html" class="menu-link">Our Approach</a>
+      <a href="contact.html"  class="menu-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative h-[70vh] -mt-20 overflow-hidden">
+    <video id="heroVideo"
+           src="assets/video/full-size/hero-index.mp4"
+           autoplay muted playsinline loop preload="auto"
+           class="absolute inset-0 w-full h-full object-cover">
+    </video>
+    <div class="absolute inset-0 bg-black/60 flex items-center">
+      <div class="container mx-auto px-6 text-white" data-aos="fade-up">
+        <h2 class="font-black uppercase text-6xl sm:text-7xl md:text-6xl leading-tight"
+            style="font-family:'Arial Black',Arial,sans-serif;">
+          INVESTING<br>IN MEXICO’S<br>FUTURE
+        </h2>
+        <p class="text-lg max-w-xl mt-4">
+          Sakai Capital acquires and operates a single high‑quality, mid‑sized company in Mexico, preserving legacy while driving growth.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: About Us -->
+  <section class="container mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+      <div class="md:w-[60%]" data-aos="fade-up">
+        <h3 class="headline text-4xl mb-6">ABOUT US</h3>
+        <p class="leading-relaxed text-gray-800">
+          Sakai Capital is a private investment firm focused on acquiring an exceptional mid-sized company in Mexico, with the goal of creating long-term value while preserving its legacy and accelerating its growth.
+        </p>
+      </div>
+      <div class="md:w-[40%] mt-10 md:mt-0" data-aos="fade-left" data-aos-delay="150">
+        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+          <img src="assets/img/index-img/section1.jpg" alt="About Us" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Who We Are? -->
+  <section class="container mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+      <div class="md:w-[40%] order-2 md:order-1 mt-10 md:mt-0" data-aos="fade-right" data-aos-delay="150">
+        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+          <img src="assets/img/index-img/section2.jpg" alt="Who We Are?" class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div class="md:w-[60%] order-1 md:order-2" data-aos="fade-up">
+        <h3 class="headline text-4xl mb-6">WHO WE ARE?</h3>
+        <p class="leading-relaxed text-gray-800">
+          We are a team of passionate entrepreneurs backed by world-class investors with deep expertise in Mexico and around the globe. With proven success in building and scaling businesses, we are focused on acquiring a single outstanding mid-sized company in Mexico. We take a hands-on, long-term approach to unlock its full potential—preserving its legacy while accelerating growth and creating lasting value.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: What We Seek? -->
+  <section class="py-24 bg-[#113758]">
+    <div class="container mx-auto px-6 flex justify-center">
+      <div class="md:w-[60%]" data-aos="fade-up">
+        <h3 class="headline text-4xl mb-6 text-white">WHAT WE SEEK?</h3>
+        <p class="leading-relaxed text-white">
+          We are looking to acquire a Mexican business with annual revenues of over MXN$200 million, operating in a large and growing market with a consistent track record of profitability. Ideal candidates will have recurring, stable, and predictable revenues, an operating margin above 15%, and clear potential for continued growth.<br><br>
+          Our aim is to acquire a majority stake and dedicate ourselves full-time to providing hands-on business, operational, and financial leadership. Backed by experienced global investors, we combine an entrepreneurial mindset with deep local expertise to help the company reach its full potential—while preserving the legacy its founders have built.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: What We Offer? -->
+  <section class="container mx-auto px-6 py-24">
+    <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+      <div class="md:w-[60%]" data-aos="fade-up">
+        <h3 class="headline text-4xl mb-6">WHAT WE OFFER?</h3>
+        <p class="leading-relaxed text-gray-800">
+          At Sakai Capital, we are experienced entrepreneurs and operators with deep investing and value-creation expertise, seeking to partner with a single, growth-oriented mid-sized business in Mexico. We offer a unique succession solution for business owners looking to transition their company into capable, committed hands—whether to retire, step back, or take the business to its next level.<br><br>
+          We move quickly and bring hands-on leadership from day one. Our team is backed by global investors with strong track records and sector expertise, allowing us to provide both immediate liquidity and long-term strategic guidance. We are fully dedicated to preserving the company’s legacy while driving continued growth, empowering its people, and securing a stable and thriving future for its employees, customers, and stakeholders.
+        </p>
+      </div>
+      <div class="md:w-[40%] mt-10 md:mt-0" data-aos="fade-left" data-aos-delay="150">
+        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+          <img src="assets/img/index-img/section4.jpg" alt="What We Offer?" class="w-full h-full object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAB -->
+  <button id="contactFab"
+          class="fixed bottom-6 right-6 h-16 w-16 rounded-full overflow-hidden p-0 bg-transparent border-0 flex items-center justify-center z-[60] focus:outline-none transition-opacity duration-300"
+          aria-label="Open contact panel">
+    <img src="assets/img/fab-logo.png" alt="Contact Sakai Capital"
+         class="h-full w-full object-contain pointer-events-none drop-shadow-lg" />
+  </button>
+
+  <!-- Slide‑in Contact Panel -->
+  <div id="contactPanel"
+       class="fixed bottom-0 right-0 w-full max-w-md transform translate-y-full opacity-0 transition-all duration-300 z-[70]">
+    <div class="bg-white rounded-t-2xl shadow-2xl p-6 relative">
+      <button id="closePanel" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" aria-label="Close">✕</button>
+      <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
+
+      <!-- AJAX form -->
+      <form id="contactForm"
+            action="https://formsubmit.co/ajax/ee5093bb8fdc5101521f06c68c005a6f"
+            method="POST"
+            class="space-y-4">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text"   name="name"    placeholder="Name"    class="w-full border rounded px-3 py-2" required />
+        <input type="email"  name="email"   placeholder="Email"   class="w-full border rounded px-3 py-2" required />
+        <textarea name="message" placeholder="Message" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+        <button type="submit" class="w-full bg-[#113758] text-white py-2 rounded hover:opacity-90">Send</button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center text-lg font-semibold text-[#113758] p-6">
+        Thanks for reaching out!
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="siteFooter" class="bg-[#113758] text-white mt-24 py-16">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+      <nav class="space-y-3 text-sm uppercase tracking-wide">
+        <a href="index.html" class="block hover:underline">Home</a>
+        <a href="team.html" class="block hover:underline">Our Team</a>
+        <a href="approach.html" class="block hover:underline">Our Approach</a>
+        <a href="contact.html" class="block hover:underline">Contact</a>
+      </nav>
+      <div class="space-y-4">
+        <p class="font-semibold text-lg">Sakai Capital LLC</p>
+        <a href="https://www.linkedin.com/company/sakai-capital" target="_blank" aria-label="LinkedIn">
+          <img src="assets/img/LinkedIn.png" alt="LinkedIn" class="h-7 w-7 hover:opacity-80">
+        </a>
+      </div>
+      <div class="text-right md:text-left md:ml-auto -space-y-5">
+        <div class="w-48 h-24 flex items-center justify-center overflow-hidden">
+          <img src="assets/img/footer-logo.png" alt="Sakai Capital footer logo"
+               class="max-h-full max-w-full object-contain">
+        </div>
+        <p class="text-xs opacity-80 mt-1">&copy; Sakai Capital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Main JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      requestAnimationFrame(() => body.classList.remove('page-enter'));
+
+      // Hero autoplay
+      const hv = document.getElementById('heroVideo');
+      if (hv) {
+        const tryPlay = () => hv.play().catch(() => {});
+        tryPlay();
+        document.addEventListener('touchstart', tryPlay, { once: true });
+      }
+
+      // Menu toggle
+      const menuToggle  = document.getElementById('menuToggle');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const closeMenu   = document.getElementById('closeMenu');
+      const links       = menuOverlay.querySelectorAll('a');
+      const lockScroll  = lock => body.style.overflow = lock ? 'hidden' : '';
+      const toggleMenu  = () => { const o = menuOverlay.classList.toggle('open'); lockScroll(o); };
+      menuToggle.addEventListener('click', toggleMenu);
+      closeMenu.addEventListener('click', toggleMenu);
+      links.forEach(a => a.addEventListener('click', e => {
+        e.preventDefault();
+        const href = a.getAttribute('href');
+        body.classList.add('page-exit');
+        if (menuOverlay.classList.contains('open')) toggleMenu();
+        setTimeout(() => window.location.href = href, 400);
+      }));
+
+      // FAB & Contact Panel
+      const fab         = document.getElementById('contactFab');
+      const panel       = document.getElementById('contactPanel');
+      const closePanel  = document.getElementById('closePanel');
+      fab.addEventListener('click', () => {
+        panel.classList.toggle('open');
+        lockScroll(panel.classList.contains('open'));
+      });
+      closePanel.addEventListener('click', () => {
+        panel.classList.remove('open');
+        lockScroll(false);
+      });
+
+      // AJAX form
+      const contactForm = document.getElementById('contactForm');
+      const thankYou    = document.getElementById('thankYouMsg');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async e => {
+          e.preventDefault();
+          const data = new FormData(contactForm);
+          try {
+            const res = await fetch(contactForm.action, {
+              method: contactForm.method,
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              contactForm.classList.add('hidden');
+              thankYou.classList.remove('hidden');
+            } else {
+              alert('Submission failed. Please try again.');
+            }
+          } catch {
+            alert('Network error. Please try again.');
+          }
+        });
+      }
+
+      // Hide FAB on footer
+      const footer = document.getElementById('siteFooter');
+      if (footer && fab) {
+        new IntersectionObserver(([e]) => {
+          fab.classList.toggle('opacity-0', e.isIntersecting);
+          fab.classList.toggle('pointer-events-none', e.isIntersecting);
+        }, { threshold: 0.1 }).observe(footer);
+      }
+
+      // Init AOS
+      AOS.init({ once:true, duration:600, easing:'ease-out-cubic' });
+      window.addEventListener('load', () => AOS.refreshHard());
+    });
+  </script>
+</body>
+</html>

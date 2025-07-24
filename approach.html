@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakai Capital | Our Approach</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    .menu-link{font-family:"Arial Black",Arial,sans-serif;color:#113758;text-transform:uppercase;}
+    @media (min-width:768px){
+      .menu-link{position:relative;}
+      .menu-link::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#113758;transition:width .3s ease;}
+      .menu-link:hover::after{width:100%;}
+    }
+    @media (hover:none){
+      .menu-link::after{display:none;}
+      .menu-link:active{border-bottom:2px solid #113758;}
+    }
+
+    #menuOverlay{height:0;pointer-events:none;z-index:9999;}
+    #menuOverlay.open{height:100vh;pointer-events:auto;}
+    #contactPanel{transform:translateY(100%);opacity:0;pointer-events:none;}
+    #contactPanel.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    body.page-enter{opacity:0;transform:translateY(50px);}
+    body.page-exit{opacity:0!important;transform:translateY(-50px)!important;transition:all .4s ease;}
+
+    /* Flip cards */
+    .card-inner{transition:transform .5s;transform-style:preserve-3d;}
+    .card-inner.flipped{transform:rotateY(180deg);}
+    .card-face{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+
+    /* Accordion */
+    .acc-panel{
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      transition:max-height .6s ease, opacity .6s ease;
+      will-change:max-height;
+    }
+    .acc-panel.open{opacity:1;}
+
+    /* Invert icons for dark bg */
+    .icon-invert{filter:invert(1) brightness(2) saturate(0);}
+
+    @media (prefers-reduced-motion: reduce){
+      [data-aos]{opacity:1!important;transform:none!important;transition:none!important;}
+      .acc-panel,.card-inner{transition:none!important;}
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 page-enter">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow h-20 flex items-center justify-between px-4">
+    <a href="index.html" class="flex-shrink-0 h-full flex items-center">
+      <img src="assets/img/logo.png" alt="Sakai Capital logo" class="h-12 w-auto object-contain" />
+    </a>
+    <button id="menuToggle" aria-label="Open menu" class="p-3 focus:outline-none">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6"  x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Menu -->
+  <div id="menuOverlay" class="fixed top-0 left-0 w-full bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
+    <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl" aria-label="Close menu">✕</button>
+    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28
+                text-4xl sm:text-5xl md:text-6xl font-black tracking-wide">
+      <a href="index.html"    class="menu-link">Home</a>
+      <a href="team.html"     class="menu-link">Our Team</a>
+      <a href="approach.html" class="menu-link">Our Approach</a>
+      <a href="contact.html"  class="menu-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+<section class="relative h-[60vh] -mt-20 overflow-hidden">
+  <video
+    id="heroVideo"
+    src="assets/video/hero-approach.mp4"
+    autoplay muted playsinline loop preload="auto"
+    class="absolute inset-0 w-full h-full object-cover"
+  ></video>
+  <div class="absolute top-20 inset-x-0 bottom-0 bg-black/60 flex items-center justify-center">
+    <div class="text-center text-white px-6" data-aos="fade-up">
+      <h1
+        class="font-black uppercase text-4xl sm:text-5xl md:text-6xl leading-tight"
+        style="font-family:'Arial Black',Arial,sans-serif;"
+      >
+        OUR<br>APPROACH
+      </h1>
+    </div>
+  </div>
+</section>
+
+  <!-- WHY WORK WITH US + ACCORDION -->
+  <section class="py-16 bg-[#113758] text-white" data-aos="fade-up">
+    <div class="container mx-auto px-6 md:w-3/4">
+      <h2 class="text-3xl sm:text-4xl font-black mb-6" style="font-family:'Arial Black',Arial,sans-serif;">
+        WHY WORK WITH US
+      </h2>
+      <p class="leading-relaxed text-sm sm:text-base mb-10">
+        At Sakai Capital, our approach is grounded in six guiding principles that reflect our respect for business owners and the legacy they've built. These principles shape every step of the process—from our first conversation to long-term stewardship. They represent our commitment to transparency, partnership, and long-term value creation, ensuring a smooth and trustworthy transition for all stakeholders involved.
+      </p>
+
+      <div id="whyAccordion" class="divide-y divide-white/30">
+        <!-- 1 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">1. Your Legacy, Our Commitment</span>
+            <svg class="h-5 w-5 transition-transform rotate-180 text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel open pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p1.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                You’ve built something meaningful—and that matters. The goal is not to flip or restructure your business, but to preserve its legacy and grow it with the same care and purpose that got it here.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">2. Know Where You Stand Early</span>
+            <svg class="h-5 w-5 transition-transform text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p2.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                Your time is valuable. If there's mutual interest, you’ll receive an initial valuation quickly so you can decide if this path is right for you.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">3. Navigate the Transition Together</span>
+            <svg class="h-5 w-5 transition-transform text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p3.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                Expect a hands-on, collaborative transition with minimal disruption to your employees, customers, and operations. Continued involvement or co-investment is welcome, if that’s of interest to you.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">4. Gain a Global Support Network</span>
+            <svg class="h-5 w-5 transition-transform text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p4.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                Backed by experienced investors, operators, and entrepreneurs across four continents, the business will benefit from deep insight and long-term guidance—without losing its local roots.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">5. Step Away with Confidence</span>
+            <svg class="h-5 w-5 transition-transform text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p5.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                Daily operations will be taken on from Day 1 post-acquisition, ensuring a smooth, responsible handoff for you and your team.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="accordion-item">
+          <button class="w-full flex items-center justify-between py-5 text-left focus:outline-none" data-acc-btn>
+            <span class="font-semibold">6. Secure a Fair Deal</span>
+            <svg class="h-5 w-5 transition-transform text-white" data-acc-chevron viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="acc-panel pb-6" data-acc-panel>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+              <img src="assets/img/diff/p6.svg" alt="" class="icon-invert w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 flex-shrink-0" />
+              <p class="text-sm sm:text-base sm:ml-2 flex-1">
+                Expect transparency from the start. You’ll receive a straightforward valuation approach and clear terms—no hidden agendas or surprises. What’s promised is what gets delivered, because your trust is essential.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Accordion -->
+    </div>
+  </section>
+
+  <!-- 5‑Step Process -->
+  <section class="container mx-auto px-6 py-16">
+    <h2 class="text-3xl sm:text-4xl font-black text-center mb-10" style="font-family:'Arial Black',Arial,sans-serif;color:#113758;" data-aos="fade-up">
+      OUR INVESTMENT PROCESS
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+      <div class="card group [perspective:1200px] cursor-pointer" data-aos="fade-right" data-aos-delay="0">
+        <div class="card-inner relative h-80 md:group-hover:[transform:rotateY(180deg)]">
+          <div class="card-face absolute inset-0 rounded-xl shadow flex flex-col items-center justify-center p-6 bg-white text-[#113758]">
+            <img src="assets/img/process/step1.svg" alt="Introductory Call" class="h-24 w-24 mb-4 object-contain" />
+            <h4 class="font-semibold text-lg mb-1">Introductory Call</h4>
+          </div>
+          <div class="card-face absolute inset-0 rounded-xl shadow flex items-center justify-center p-6 bg-[#f6f4e5] text-gray-900 [transform:rotateY(180deg)]">
+            <p class="text-sm text-center">Quick conversation to learn about your company and succession goals.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card group [perspective:1200px] cursor-pointer" data-aos="fade-right" data-aos-delay="100">
+        <div class="card-inner relative h-80 md:group-hover:[transform:rotateY(180deg)]">
+          <div class="card-face absolute inset-0 rounded-xl shadow flex flex-col items-center justify-center p-6 bg-white text-[#113758]">
+            <img src="assets/img/process/step2.svg" alt="Preliminary Analysis" class="h-24 w-24 mb-4 object-contain" />
+            <h4 class="font-semibold text-lg mb-1">Preliminary Analysis</h4>
+          </div>
+          <div class="card-face absolute inset-0 rounded-xl shadow flex items-center justify-center p-6 bg-[#c2cee1] text-gray-900 [transform:rotateY(180deg)]">
+            <p class="text-sm text-center">We review high‑level financials and industry positioning to confirm fit.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card group [perspective:1200px] cursor-pointer" data-aos="fade-right" data-aos-delay="200">
+        <div class="card-inner relative h-80 md:group-hover:[transform:rotateY(180deg)]">
+          <div class="card-face absolute inset-0 rounded-xl shadow flex flex-col items-center justify-center p-6 bg-white text-[#113758]">
+            <img src="assets/img/process/step3.svg" alt="Letter of Intent" class="h-24 w-24 mb-4 object-contain" />
+            <h4 class="font-semibold text-lg mb-1">Letter of Intent</h4>
+          </div>
+          <div class="card-face absolute inset-0 rounded-xl shadow flex items-center justify-center p-6 bg-[#8795b4] text-white [transform:rotateY(180deg)]">
+            <p class="text-sm text-center">We present a non‑binding LOI outlining valuation and key deal terms.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card group [perspective:1200px] cursor-pointer" data-aos="fade-right" data-aos-delay="300">
+        <div class="card-inner relative h-80 md:group-hover:[transform:rotateY(180deg)]">
+          <div class="card-face absolute inset-0 rounded-xl shadow flex flex-col items-center justify-center p-6 bg-white text-[#113758]">
+            <img src="assets/img/process/step4.svg" alt="Due Diligence" class="h-24 w-24 mb-4 object-contain" />
+            <h4 class="font-semibold text-lg mb-1">Due Diligence</h4>
+          </div>
+          <div class="card-face absolute inset-0 rounded-xl shadow flex items-center justify-center p-6 bg-[#3E5A75] text-white [transform:rotateY(180deg)]">
+            <p class="text-sm text-center">Deep dive into financial, legal, and operational data to validate assumptions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card group [perspective:1200px] cursor-pointer" data-aos="fade-right" data-aos-delay="400">
+        <div class="card-inner relative h-80 md:group-hover:[transform:rotateY(180deg)]">
+          <div class="card-face absolute inset-0 rounded-xl shadow flex flex-col items-center justify-center p-6 bg-white text-[#113758]">
+            <img src="assets/img/process/step5.svg" alt="Final Agreement" class="h-24 w-24 mb-4 object-contain" />
+            <h4 class="font-semibold text-lg mb-1">Final Agreement</h4>
+          </div>
+          <div class="card-face absolute inset-0 rounded-xl shadow flex items-center justify-center p-6 bg-[#113758] text-white [transform:rotateY(180deg)]">
+            <p class="text-sm text-center">Execute definitive agreements and plan a smooth transition with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAB -->
+  <button id="contactFab"
+          class="fixed bottom-6 right-6 h-16 w-16 rounded-full overflow-hidden p-0 bg-transparent border-0 flex items-center justify-center z-[60] focus:outline-none transition-opacity duration-300"
+          aria-label="Open contact panel">
+    <img src="assets/img/fab-logo.png" alt="Contact Sakai Capital"
+         class="h-full w-full object-contain pointer-events-none drop-shadow-lg" />
+  </button>
+
+  <!-- Slide‑in Contact Panel -->
+  <div id="contactPanel"
+       class="fixed bottom-0 right-0 w-full max-w-md transform translate-y-full opacity-0 transition-all duration-300 z-[70]">
+    <div class="bg-white rounded-t-2xl shadow-2xl p-6 relative">
+      <button id="closePanel" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" aria-label="Close">✕</button>
+      <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
+
+      <!-- AJAX form -->
+      <form id="contactForm"
+            action="https://formsubmit.co/ajax/ee5093bb8fdc5101521f06c68c005a6f"
+            method="POST"
+            class="space-y-4">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text"   name="name"    placeholder="Name"    class="w-full border rounded px-3 py-2" required />
+        <input type="email"  name="email"   placeholder="Email"   class="w-full border rounded px-3 py-2" required />
+        <textarea name="message" placeholder="Message" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+        <button type="submit" class="w-full bg-[#113758] text-white py-2 rounded hover:opacity-90">Send</button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center text-lg font-semibold text-[#113758] p-6">
+        Thanks for reaching out!
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer id="siteFooter" class="bg-[#113758] text-white mt-24 py-16">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+      <!-- Nav column -->
+      <nav class="space-y-3 text-sm uppercase tracking-wide">
+        <a href="index.html"    class="block hover:underline">Home</a>
+        <a href="team.html"     class="block hover:underline">Our Team</a>
+        <a href="approach.html" class="block hover:underline">Our Approach</a>
+        <a href="contact.html"  class="block hover:underline">Contact</a>
+      </nav>
+
+      <!-- Middle branding -->
+      <div class="space-y-4">
+        <p class="font-semibold text-lg">Sakai Capital LLC</p>
+        <a href="https://www.linkedin.com/company/sakai-capital" target="_blank" aria-label="LinkedIn"
+           class="inline-block hover:opacity-80">
+          <img src="assets/img/LinkedIn.png" alt="LinkedIn" class="h-7 w-7">
+        </a>
+      </div>
+
+      <!-- Right side logo + copyright -->
+      <div class="text-right md:text-left md:ml-auto -space-y-5">
+        <div class="w-48 h-24 flex items-center justify-center overflow-hidden">
+          <img
+            src="assets/img/footer-logo.png"
+            alt="Sakai Capital footer logo"
+            class="max-h-full max-w-full object-contain"
+          />
+        </div>
+        <p class="text-xs opacity-80 mt-1">&copy; Sakai Capital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Main JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      requestAnimationFrame(()=> body.classList.remove('page-enter'));
+
+      // Hero video autoplay
+      const hv = document.getElementById('heroVideo');
+      if (hv) {
+        const tryPlay = () => hv.play().catch(()=>{});
+        tryPlay();
+        document.addEventListener('touchstart', tryPlay, { once: true });
+      }
+
+      // Menu + page transitions
+      const menuToggle = document.getElementById('menuToggle');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const closeMenuBtn = document.getElementById('closeMenu');
+      const menuLinks = menuOverlay.querySelectorAll('a');
+      const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
+      const toggleMenu = () => {
+        const open = menuOverlay.classList.toggle('open');
+        lockScroll(open);
+      };
+      menuToggle.addEventListener('click', toggleMenu);
+      closeMenuBtn.addEventListener('click', toggleMenu);
+      menuLinks.forEach(link=>{
+        link.addEventListener('click', e=>{
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          body.classList.add('page-exit');
+          if(menuOverlay.classList.contains('open')) toggleMenu();
+          setTimeout(()=> window.location.href = href, 400);
+        });
+      });
+
+      // FAB / panel
+      const fab = document.getElementById('contactFab');
+      const panel = document.getElementById('contactPanel');
+      const closePanelBtn = document.getElementById('closePanel');
+      const footer = document.getElementById('siteFooter');
+
+      const openPanel = () => { panel.classList.add('open'); lockScroll(true); };
+      const closePanel = () => { panel.classList.remove('open'); lockScroll(false); };
+
+      if (fab) fab.addEventListener('click', openPanel);
+      if (closePanelBtn) closePanelBtn.addEventListener('click', closePanel);
+
+      document.addEventListener('keydown', e=>{
+        if(e.key === 'Escape'){
+          if(menuOverlay.classList.contains('open')) toggleMenu();
+          if(panel.classList.contains('open')) closePanel();
+        }
+      });
+
+            // AJAX form
+      const contactForm = document.getElementById('contactForm');
+      const thankYou    = document.getElementById('thankYouMsg');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async e => {
+          e.preventDefault();
+          const data = new FormData(contactForm);
+          try {
+            const res = await fetch(contactForm.action, {
+              method: contactForm.method,
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              contactForm.classList.add('hidden');
+              thankYou.classList.remove('hidden');
+            } else {
+              alert('Submission failed. Please try again.');
+            }
+          } catch {
+            alert('Network error. Please try again.');
+          }
+        });
+      }
+      
+      // Hide FAB when footer visible
+      if (footer && fab) {
+        const io = new IntersectionObserver(([entry])=>{
+          fab.classList.toggle('opacity-0', entry.isIntersecting);
+          fab.classList.toggle('pointer-events-none', entry.isIntersecting);
+        }, { threshold:0.1 });
+        io.observe(footer);
+      }
+
+      // Tap-to-flip process cards
+      document.querySelectorAll('.card').forEach(card=>{
+        const inner = card.querySelector('.card-inner');
+        card.addEventListener('click', ()=> inner.classList.toggle('flipped'));
+      });
+
+      // Accordion logic
+      const items = document.querySelectorAll('#whyAccordion .accordion-item');
+      items.forEach((item, idx)=>{
+        const btn   = item.querySelector('[data-acc-btn]');
+        const panel = item.querySelector('[data-acc-panel]');
+        const chev  = item.querySelector('[data-acc-chevron]');
+
+        if(idx === 0){
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          panel.classList.add('open');
+        }
+
+        btn.addEventListener('click', ()=>{
+          if(panel.classList.contains('open')) return;
+
+          // open this
+          panel.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          chev.classList.add('rotate-180');
+
+          // close others
+          items.forEach(other=>{
+            if(other === item) return;
+            const p = other.querySelector('[data-acc-panel]');
+            const c = other.querySelector('[data-acc-chevron]');
+            if(p.classList.contains('open')){
+              p.style.maxHeight = p.scrollHeight + 'px';
+              requestAnimationFrame(()=>{ p.style.maxHeight = '0'; });
+              p.classList.remove('open');
+              c.classList.remove('rotate-180');
+            }
+          });
+        });
+
+        // tidy inline max-height after transitions
+        panel.addEventListener('transitionend', e=>{
+          if(e.propertyName !== 'max-height') return;
+          if(panel.classList.contains('open')){
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }else{
+            panel.style.maxHeight = '0';
+          }
+        });
+
+        window.addEventListener('resize', ()=>{
+          if(panel.classList.contains('open')){
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // AOS
+      AOS.init({
+        once:true,
+        duration:600,
+        easing:'ease-out-cubic',
+        disable:false
+      });
+      window.addEventListener('load', ()=> AOS.refreshHard());
+    });
+  </script>
+</body>
+</html>

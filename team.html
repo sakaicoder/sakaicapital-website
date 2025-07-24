@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakai Capital | Our Team</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    .menu-link{font-family:"Arial Black",Arial,sans-serif;color:#113758;text-transform:uppercase;}
+    @media (min-width:768px){
+      .menu-link{position:relative;}
+      .menu-link::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#113758;transition:width .3s ease;}
+      .menu-link:hover::after{width:100%;}
+    }
+    @media (hover:none){
+      .menu-link::after{display:none;}
+      .menu-link:active{border-bottom:2px solid #113758;}
+    }
+    #menuOverlay{height:0;pointer-events:none;z-index:9999;}
+    #menuOverlay.open{height:100vh;pointer-events:auto;}
+    #contactPanel{transform:translateY(100%);opacity:0;pointer-events:none;}
+    #contactPanel.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    body.page-enter{opacity:0;transform:translateY(50px);}
+    body.page-exit{opacity:0!important;transform:translateY(-50px)!important;transition:all .4s ease;}
+
+    /* Bio overlay cards */
+    .team-card img{
+      transition:filter .5s ease, transform .5s ease;
+      transform:scale(1);
+    }
+    .team-card .bio-overlay{
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .5s ease;
+    }
+    .team-card.show-bio img,
+    .team-card:hover img{
+      filter:blur(4px);
+      transform:scale(1.05);
+    }
+    .team-card.show-bio .bio-overlay,
+    .team-card:hover .bio-overlay{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      [data-aos]{opacity:1!important;transform:none!important;transition:none!important;}
+      .team-card img,
+      .team-card .bio-overlay{transition:none!important;}
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 page-enter">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow h-20 flex items-center justify-between px-4">
+    <a href="index.html" class="flex-shrink-0 h-full flex items-center">
+      <img src="assets/img/logo.png" alt="Sakai Capital logo" class="h-12 w-auto object-contain" />
+    </a>
+    <button id="menuToggle" aria-label="Open menu" class="p-3 focus:outline-none">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6"  x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Menu Overlay -->
+  <div id="menuOverlay" class="fixed top-0 left-0 w-full bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
+    <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl" aria-label="Close menu">✕</button>
+    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-6xl font-black tracking-wide">
+      <a href="index.html"    class="menu-link">Home</a>
+      <a href="team.html"     class="menu-link">Our Team</a>
+      <a href="approach.html" class="menu-link">Our Approach</a>
+      <a href="contact.html"  class="menu-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+    <section class="relative h-[50vh] -mt-20 overflow-hidden">
+    <video
+        id="heroVideo"
+        src="assets/video/hero-team.mp4"
+        autoplay muted playsinline loop preload="auto"
+        class="absolute inset-0 w-full h-full object-cover"
+    ></video>
+    <div class="absolute top-20 inset-x-0 bottom-0 bg-black/60 flex items-center justify-center">
+        <div class="text-center text-white px-6" data-aos="fade-up">
+        <h1
+            class="font-black uppercase text-4xl sm:text-5xl md:text-6xl leading-tight"
+            style="font-family:'Arial Black',Arial,sans-serif;"
+        >
+            OUR TEAM
+        </h1>
+        </div>
+    </div>
+    </section>
+
+  <!-- KEY STATS -->
+  <section class="bg-[#113758] text-white py-16" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-black mb-10" style="font-family:'Arial Black',Arial,sans-serif;">KEY STATS</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div class="border border-white/70 rounded-xl aspect-square flex flex-col items-center justify-center text-center px-6"
+             data-aos="fade-up" data-aos-delay="0">
+          <span class="block text-5xl font-black mb-3 leading-none">15+ years</span>
+          <p class="text-sm leading-relaxed">
+            of combined experience advising mid-sized companies across diverse industries—focused on driving top-line growth, improving operational efficiency, and creating long-term value
+          </p>
+        </div>
+        <div class="border border-white/70 rounded-xl aspect-square flex flex-col items-center justify-center text-center px-6"
+             data-aos="fade-up" data-aos-delay="100">
+          <span class="block text-5xl font-black mb-3 leading-none">10+ years</span>
+          <p class="text-sm leading-relaxed">
+            Of extensive value-creation experience in Mexico, spanning the full lifecycle of companies—from due diligence and pre-merger planning to post-merger integration, transformation, and sustainable growth and optimization
+          </p>
+        </div>
+        <div class="border border-white/70 rounded-xl aspect-square flex flex-col items-center justify-center text-center px-6"
+             data-aos="fade-up" data-aos-delay="200">
+          <span class="block text-5xl font-black mb-3 leading-none">12</span>
+          <p class="text-sm leading-relaxed">
+            leading investors composed of institutional investors, high-net-worth individuals, seasoned operators, and successful entrepreneurs
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCED PARTNERS -->
+  <section class="container mx-auto px-6 py-16" data-aos="fade-up">
+    <h2 class="text-3xl sm:text-4xl font-black mb-10"
+        style="font-family:'Arial Black',Arial,sans-serif;color:#113758;">EXPERIENCED PARTNERS</h2>
+
+    <div class="space-y-6 max-w-4xl text-sm sm:text-base leading-relaxed mb-16">
+      <p>
+        Adela Kably Mussali and Giancarlo Solórzano Picasso founded Sakai Capital with a clear vision: to acquire and lead a mid-sized company in Mexico through its next stage of growth—creating long-term value for employees, customers, and stakeholders, while contributing meaningfully to the local economy.
+      </p>
+      <p>
+        With over 15 years of combined experience in strategy, operations, and advisory roles, Adela and Giancarlo bring complementary strengths that go beyond the traditional search fund profile. They have a proven track record in driving top-line growth, enhancing operational efficiency, and generating sustainable value for mid-sized businesses.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <!-- Adela -->
+      <div class="team-card relative h-[32rem] rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-right" data-aos-delay="0">
+        <img src="assets/img/team/adela.jpg" alt="Adela Kably Mussali" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <!-- Name ribbon -->
+        <div class="absolute bottom-0 left-0 right-0 p-6 bg-black/50 text-white z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0 team-card:show-bio:opacity-0">
+          <h3 class="text-xl font-semibold">Adela Kably</h3>
+          <p class="text-sm opacity-90">Managing Partner</p>
+        </div>
+
+        <!-- Overlay bio -->
+        <div class="bio-overlay absolute inset-0 bg-white/85 backdrop-blur-sm z-20 flex flex-col p-6 overflow-y-auto">
+          <button class="self-end text-gray-600 hover:text-gray-800 text-2xl leading-none mb-2 md:hidden" data-close-bio aria-label="Close">✕</button>
+            <h3
+            class="text-3xl font-black mb-3 text-[#113758] leading-tight"
+            style="font-family: 'Arial Black', Arial, sans-serif;"
+            >
+            Adela<br>
+            Kably<br>
+            Mussali
+            </h3>
+          <p class="text-base leading-relaxed">
+            Adela is a seasoned professional with over 10 years of experience advising SMBs and family‑owned businesses. She was a manager at Kearney where she led commercial due diligence and cost‑efficiency initiatives—consistently generating strategic insights and measurable value. <br><br>
+            <b>EMBA from Kellogg<br>B.B.A. in Business Administration from ITAM<br> M.A. in Data Analytics from ISDI </b>
+          </p>
+        </div>
+      </div>
+
+      <!-- Giancarlo -->
+      <div class="team-card relative h-[32rem] rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-left" data-aos-delay="100">
+        <img src="assets/img/team/giancarlo.jpg" alt="Giancarlo Solórzano Picasso" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/20"></div>
+
+        <div class="absolute bottom-0 left-0 right-0 p-6 bg-black/50 text-white z-10 pointer-events-none transition-opacity duration-500 group-hover:opacity-0 team-card:show-bio:opacity-0">
+          <h3 class="text-xl font-semibold">Giancarlo Solórzano</h3>
+          <p class="text-sm opacity-90">Managing Partner</p>
+        </div>
+
+        <div class="bio-overlay absolute inset-0 bg-white/85 backdrop-blur-sm z-20 flex flex-col p-6 overflow-y-auto">
+          <button class="self-end text-gray-600 hover:text-gray-800 text-2xl leading-none mb-2 md:hidden" data-close-bio aria-label="Close">✕</button>
+            <h3
+            class="text-3xl font-black mb-3 text-[#113758] leading-tight"
+            style="font-family: 'Arial Black', Arial, sans-serif;"
+            >
+            Giancarlo<br>
+            Solórzano<br>
+            Picasso
+            </h3>
+          <p class="text-base leading-relaxed">
+            Giancarlo is an operations leader and advisor who has led growth initiatives starting in LatAm agribusiness. He was also a manager at Kearney, where led large-scale operational transformations and supply‑chain optimization—combining analytical rigor with hands‑on execution to drive lasting impact. <br><br>
+            <b>MBA from Yale School of Management <br>B.S. in Mechanical Engineering from the University of Notre Dame </b>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTORS -->
+  <section id="investors" class="py-16 bg-[#f6f4e5]" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-black mb-6" style="font-family:'Arial Black',Arial,sans-serif;color:#113758;">INSTITUTIONAL INVESTORS</h2>
+      <p class="max-w-4xl text-sm sm:text-base leading-relaxed mb-10 text-gray-800">
+        Sakai Capital is backed by a diverse group of institutional investors, family offices, entrepreneurs, and seasoned operators—each with deep experience in Mexico and globally—based in six countries across four continents, and united by a shared commitment to building enduring, high-impact companies.
+      </p>
+
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 place-items-center" id="investorGrid">
+        <template id="investorTemplate">
+          <div class="w-24 h-24 rounded-full overflow-hidden flex items-center justify-center shadow-md bg-white p-2" data-aos="zoom-in">
+            <img class="h-full w-full object-contain" />
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAB -->
+  <button id="contactFab"
+          class="fixed bottom-6 right-6 h-16 w-16 rounded-full overflow-hidden p-0 bg-transparent border-0 flex items-center justify-center z-[60] focus:outline-none transition-opacity duration-300"
+          aria-label="Open contact panel">
+    <img src="assets/img/fab-logo.png" alt="Contact Sakai Capital"
+         class="h-full w-full object-contain pointer-events-none drop-shadow-lg" />
+  </button>
+
+  <!-- Slide‑in Contact Panel -->
+  <div id="contactPanel"
+       class="fixed bottom-0 right-0 w-full max-w-md transform translate-y-full opacity-0 transition-all duration-300 z-[70]">
+    <div class="bg-white rounded-t-2xl shadow-2xl p-6 relative">
+      <button id="closePanel" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" aria-label="Close">✕</button>
+      <h3 class="text-2xl font-semibold mb-4">Get in Touch</h3>
+
+      <!-- AJAX form -->
+      <form id="contactForm"
+            action="https://formsubmit.co/ajax/ee5093bb8fdc5101521f06c68c005a6f"
+            method="POST"
+            class="space-y-4">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text"   name="name"    placeholder="Name"    class="w-full border rounded px-3 py-2" required />
+        <input type="email"  name="email"   placeholder="Email"   class="w-full border rounded px-3 py-2" required />
+        <textarea name="message" placeholder="Message" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+        <button type="submit" class="w-full bg-[#113758] text-white py-2 rounded hover:opacity-90">Send</button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center text-lg font-semibold text-[#113758] p-6">
+        Thanks for reaching out!
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="siteFooter" class="bg-[#113758] text-white mt-24 py-16">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
+      <!-- Nav column -->
+      <nav class="space-y-3 text-sm uppercase tracking-wide">
+        <a href="index.html"    class="block hover:underline">Home</a>
+        <a href="team.html"     class="block hover:underline">Our Team</a>
+        <a href="approach.html" class="block hover:underline">Our Approach</a>
+        <a href="contact.html"  class="block hover:underline">Contact</a>
+      </nav>
+
+      <!-- Middle branding -->
+      <div class="space-y-4">
+        <p class="font-semibold text-lg">Sakai Capital LLC</p>
+        <a href="https://www.linkedin.com/company/sakai-capital" target="_blank" aria-label="LinkedIn"
+           class="inline-block hover:opacity-80">
+          <img src="assets/img/LinkedIn.png" alt="LinkedIn" class="h-7 w-7">
+        </a>
+      </div>
+
+      <!-- Right side logo + copyright -->
+      <div class="text-right md:text-left md:ml-auto -space-y-5">
+        <div class="w-48 h-24 flex items-center justify-center overflow-hidden">
+          <img
+            src="assets/img/footer-logo.png"
+            alt="Sakai Capital footer logo"
+            class="max-h-full max-w-full object-contain"
+          />
+        </div>
+        <p class="text-xs opacity-80 mt-1">&copy; Sakai Capital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const body = document.body;
+      requestAnimationFrame(()=> body.classList.remove('page-enter'));
+
+      // Hero video autoplay helper
+      const hv = document.getElementById('heroVideo');
+      if (hv) {
+        const tryPlay = () => hv.play().catch(()=>{});
+        tryPlay();
+        document.addEventListener('touchstart', tryPlay, { once: true });
+      }
+
+      // Menu
+      const menuToggle = document.getElementById('menuToggle');
+      const menuOverlay = document.getElementById('menuOverlay');
+      const closeMenuBtn = document.getElementById('closeMenu');
+      const menuLinks = menuOverlay.querySelectorAll('a');
+      const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
+      const toggleMenu = () => {
+        const open = menuOverlay.classList.toggle('open');
+        lockScroll(open);
+      };
+      menuToggle.addEventListener('click', toggleMenu);
+      closeMenuBtn.addEventListener('click', toggleMenu);
+      menuLinks.forEach(link=>{
+        link.addEventListener('click', e=>{
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          body.classList.add('page-exit');
+          if(menuOverlay.classList.contains('open')) toggleMenu();
+          setTimeout(()=> window.location.href = href, 400);
+        });
+      });
+
+      // FAB / panel
+      const fab = document.getElementById('contactFab');
+      const panel = document.getElementById('contactPanel');
+      const closePanelBtn = document.getElementById('closePanel');
+      const footer = document.getElementById('siteFooter');
+
+      const openPanel = () => { panel.classList.add('open'); lockScroll(true); };
+      const closePanel = () => { panel.classList.remove('open'); lockScroll(false); };
+      if (fab) fab.addEventListener('click', openPanel);
+      if (closePanelBtn) closePanelBtn.addEventListener('click', closePanel);
+
+      document.addEventListener('keydown', e=>{
+        if(e.key === 'Escape'){
+          if(menuOverlay.classList.contains('open')) toggleMenu();
+          if(panel.classList.contains('open')) closePanel();
+        }
+      });
+
+            // AJAX form
+      const contactForm = document.getElementById('contactForm');
+      const thankYou    = document.getElementById('thankYouMsg');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async e => {
+          e.preventDefault();
+          const data = new FormData(contactForm);
+          try {
+            const res = await fetch(contactForm.action, {
+              method: contactForm.method,
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              contactForm.classList.add('hidden');
+              thankYou.classList.remove('hidden');
+            } else {
+              alert('Submission failed. Please try again.');
+            }
+          } catch {
+            alert('Network error. Please try again.');
+          }
+        });
+      }
+
+      // Hide FAB at footer
+      if (footer && fab) {
+        const io = new IntersectionObserver(([entry])=>{
+          fab.classList.toggle('opacity-0', entry.isIntersecting);
+          fab.classList.toggle('pointer-events-none', entry.isIntersecting);
+        }, {threshold:0.1});
+        io.observe(footer);
+      }
+
+      // Bio cards for mobile/tap
+      document.querySelectorAll('[data-bio-card]').forEach(card=>{
+        const closeBtn = card.querySelector('[data-close-bio]');
+        card.addEventListener('click', (e)=>{
+          // Ignore clicks on overlay scroll or close button; let close button handle it
+          if(e.target.closest('[data-close-bio]')) return;
+          if(window.matchMedia('(hover: hover)').matches) return; // desktop hover handles it
+          card.classList.toggle('show-bio');
+        });
+        if(closeBtn){
+          closeBtn.addEventListener('click', (e)=>{
+            e.stopPropagation();
+            card.classList.remove('show-bio');
+          });
+        }
+      });
+
+      // Investor grid
+      const investorGrid = document.getElementById('investorGrid');
+      if (investorGrid) {
+        const tpl = document.getElementById('investorTemplate');
+        for (let i = 1; i <= 11; i++) {
+          const clone = tpl.content.cloneNode(true);
+          clone.querySelector('img').src = `assets/img/investors/investor${i}.png`;
+          clone.querySelector('img').alt = `Investor ${i}`;
+          clone.firstElementChild.setAttribute('data-aos-delay', String(i*50));
+          investorGrid.appendChild(clone);
+        }
+      }
+
+      // AOS
+      AOS.init({ once:true, duration:600, easing:'ease-out-cubic', disable:false });
+      window.addEventListener('load', ()=> AOS.refreshHard());
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
