@@ -21,7 +21,7 @@
       .menu-link::after { display:none; }
       .menu-link:active { border-bottom:2px solid #113758; }
     }
-    .headline { font-family:"Arial Black",Arial,sans-serif; color:#113758; }
+    .headline { font-family:"Arial Black",Arial,sans-serif !important; color:#113758; }
     #menuOverlay { height:0; pointer-events:none; z-index:9999; }
     #menuOverlay.open { height:100vh; pointer-events:auto; }
     #contactPanel { transform:translateY(100%); opacity:0; pointer-events:none; }
@@ -53,7 +53,7 @@
   <!-- Menu Overlay -->
   <div id="menuOverlay" class="fixed inset-0 bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
     <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl" aria-label="Close menu">✕</button>
-    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-6xl font-black tracking-wide">
+    <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-8xl font-black tracking-wide">
       <a href="index.html"    class="menu-link">Home</a>
       <a href="team.html"     class="menu-link">Our Team</a>
       <a href="approach.html" class="menu-link">Our Approach</a>
@@ -64,53 +64,66 @@
   <!-- Hero -->
   <section class="relative h-[100vh] md:h-[70vh] -mt-20 overflow-hidden">
     <video id="heroVideo"
-           src="assets/video/full-size/hero-index.mp4"
+           src="../Backups/full-size/hero-index.mp4"
            autoplay muted playsinline loop preload="auto"
            class="absolute inset-0 w-full h-full object-cover">
     </video>
-    <div class="absolute inset-0 bg-black/60 flex items-center">
+    <div class="absolute inset-0 bg-black/00 flex items-center">
       <div class="container mx-auto px-6 text-white" data-aos="fade-up">
         <h2 class="font-black uppercase text-6xl sm:text-7xl md:text-6xl leading-tight"
             style="font-family:'Arial Black',Arial,sans-serif;">
           SAKAI<br>CAPITAL
         </h2>
-        <p class="text-lg max-w-xl mt-4">
-          Founded to acquire and operate a single high‑quality, mid‑sized company in Mexico.
+        <p class="text-2xl max-w-xl mt-4">
+          Your legacy, <b>our commitment</b>
         </p>
       </div>
     </div>
   </section>
 
   <!-- Section 1: About Us -->
-  <section class="container mx-auto px-6 py-24">
+  <section class="container mx-auto px-6 py-10">
     <div class="flex flex-col md:flex-row md:items-center md:gap-12">
-      <div class="md:w-[60%]" data-aos="fade-up">
-        <h3 class="headline text-4xl mb-6">ABOUT US</h3>
-        <p class="leading-relaxed text-gray-800">
-          Sakai Capital is a private investment firm focused on acquiring an exceptional mid-sized company in Mexico, with the goal of creating long-term value while preserving its legacy and accelerating its growth.
+      <div class="md:w-[100%]" data-aos="fade-up">
+        <h3 class="headline text-4xl mb-6 font-black ">ABOUT US</h3>
+        <p class="leading-relaxed text-2xl text-gray-800">
+          Sakai Capital is a <b>private investment firm</b> focused on acquiring an <b>exceptional mid-sized company </b> in Mexico, with the goal of creating long-term value while preserving its legacy and accelerating its growth.
         </p>
       </div>
+      <!--
       <div class="md:w-[40%] mt-10 md:mt-0" data-aos="fade-left" data-aos-delay="150">
         <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
           <img src="assets/img/index-img/section1.jpg" alt="About Us" class="w-full h-full object-cover" />
         </div>
       </div>
+      -->
     </div>
   </section>
 
   <!-- Section 2: Who We Are? -->
-  <section class="container mx-auto px-6 py-24">
-    <div class="flex flex-col md:flex-row md:items-center md:gap-12">
-      <div class="md:w-[40%] order-2 md:order-1 mt-10 md:mt-0" data-aos="fade-right" data-aos-delay="150">
-        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
-          <img src="assets/img/index-img/section2.jpg" alt="Who We Are?" class="w-full h-full object-cover" />
-        </div>
-      </div>
-      <div class="md:w-[60%] order-1 md:order-2" data-aos="fade-up">
-        <h3 class="headline text-4xl mb-6">WHO WE ARE?</h3>
-        <p class="leading-relaxed text-gray-800">
-          We are a team of passionate entrepreneurs backed by world-class investors with deep expertise in Mexico and around the globe. With proven success in building and scaling businesses, we are focused on acquiring a single outstanding mid-sized company in Mexico. We take a hands-on, long-term approach to unlock its full potential—preserving its legacy while accelerating growth and creating lasting value.
+  <section class="bg-[#cad1ea] py-24">
+    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
+      <!-- Text first on mobile, second on desktop -->
+      <div class="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-up">
+        <h3 class="headline text-3xl sm:text-5xl font-black mb-6" style="font-family:'Arial Black',Arial,sans-serif;">          
+          WHO WE ARE
+        </h3>
+        <p class="leading-relaxed text-base lg:text-lg text-gray-800">
+          We are a team of passionate entrepreneurs backed by world-class investors with deep expertise in Mexico and around the globe.
+          With proven success in building and scaling businesses, we are focused on acquiring a single outstanding mid-sized company in Mexico.
+          We take a hands-on, long-term approach to unlock its full potential—preserving its legacy while accelerating growth and creating lasting value.
         </p>
+      </div>
+
+      <!-- Image full‑width on mobile, half on desktop -->
+      <div class="w-full lg:w-1/2 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="150">
+        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
+          <img
+            src="assets/img/index-img/section2.jpg"
+            alt="Who We Are"
+            class="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -119,8 +132,8 @@
   <section class="py-24 bg-[#113758]">
     <div class="container mx-auto px-6 flex justify-center">
       <div class="md:w-[60%]" data-aos="fade-up">
-        <h3 class="headline text-4xl mb-6 text-white">WHAT WE SEEK?</h3>
-        <p class="leading-relaxed text-white">
+        <h3 class="headline text-5xl mb-6 font-black text-white">WHAT WE SEEK?</h3>
+        <p class="leading-relaxed text-white text-lg">
           We are looking to acquire a Mexican business with annual revenues of over MXN$200 million, operating in a large and growing market with a consistent track record of profitability. Ideal candidates will have recurring, stable, and predictable revenues, an operating margin above 15%, and clear potential for continued growth.<br><br>
           Our aim is to acquire a majority stake and dedicate ourselves full-time to providing hands-on business, operational, and financial leadership. Backed by experienced global investors, we combine an entrepreneurial mindset with deep local expertise to help the company reach its full potential—while preserving the legacy its founders have built.
         </p>
@@ -132,7 +145,7 @@
   <section class="container mx-auto px-6 py-24">
     <div class="flex flex-col md:flex-row md:items-center md:gap-12">
       <div class="md:w-[60%]" data-aos="fade-up">
-        <h3 class="headline text-4xl mb-6">WHAT WE OFFER?</h3>
+        <h3 class="headline text-5xl mb-6 font-black">WHAT WE OFFER?</h3>
         <p class="leading-relaxed text-gray-800">
           At Sakai Capital, we are experienced entrepreneurs and operators with deep investing and value-creation expertise, seeking to partner with a single, growth-oriented mid-sized business in Mexico. We offer a unique succession solution for business owners looking to transition their company into capable, committed hands—whether to retire, step back, or take the business to its next level.<br><br>
           We move quickly and bring hands-on leadership from day one. Our team is backed by global investors with strong track records and sector expertise, allowing us to provide both immediate liquidity and long-term strategic guidance. We are fully dedicated to preserving the company’s legacy while driving continued growth, empowering its people, and securing a stable and thriving future for its employees, customers, and stakeholders.
