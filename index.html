@@ -35,7 +35,7 @@
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
 
-<!-- Twitter Card -->
+  <!-- Twitter Card -->
   <meta name="twitter:card"       content="summary_large_image" />
   <meta name="twitter:title"      content="Sakai Capital | Home" />
   <meta name="twitter:description" content="Sakai Capital is a Mexico based search fund seeking to acquire and operate a mid-sized company." />
@@ -43,6 +43,9 @@
     name="twitter:image"
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
+
+  <!-- Preload poster image -->
+  <link rel="preload" as="image" href="/assets/img/hero-index-poster.webp" fetchpriority="high">
 
   <!-- Schema.org structured data -->
    <script type="application/ld+json">
@@ -71,6 +74,7 @@
 
   <!--Styles-->
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
@@ -100,6 +104,11 @@
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 page-enter">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    document.body.classList.remove('page-enter');
+    });
+  </script>
 
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow h-20 flex items-center justify-between px-4">
@@ -130,9 +139,11 @@
   <!-- Hero -->
   <section class="relative h-[100vh] md:h-[70vh] -mt-20 overflow-hidden">
     <video id="heroVideo"
-           src="assets/video/hero-index.mp4"
-           autoplay muted playsinline loop preload="auto"
-           class="absolute inset-0 w-full h-full object-cover">
+          data-src="/assets/video/hero-index.mp4"
+          poster="/assets/img/hero-index-poster.webp"
+          preload="none"
+          autoplay muted playsinline loop
+          class="absolute inset-0 w-full h-full object-cover">
     </video>
     <div class="absolute inset-0 bg-black/00 flex items-center">
       <div class="container mx-auto px-6 text-white" data-aos="fade-up">
@@ -296,11 +307,22 @@
       // Hero autoplay
       const hv = document.getElementById('heroVideo');
       if (hv) {
-        const tryPlay = () => hv.play().catch(() => {});
-        tryPlay();
-        document.addEventListener('touchstart', tryPlay, { once: true });
-      }
+        const loadVideo = () => {
+          if (!hv.src) hv.src = hv.dataset.src;
+          hv.load();
+          hv.play().catch(() => {});
+        };
 
+        // Desktop: defer until idle; Mobile: wait for first interaction
+        const isMobile = matchMedia('(max-width: 767px)').matches;
+        if (!isMobile) {
+          (window.requestIdleCallback || setTimeout)(loadVideo, 0);
+        }
+        document.addEventListener('touchstart', loadVideo, { once: true });
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible' && !hv.src) loadVideo();
+        });
+      }
       // Menu toggle
       const menuToggle  = document.getElementById('menuToggle');
       const menuOverlay = document.getElementById('menuOverlay');
