@@ -108,7 +108,6 @@
     #contactPanel.open { transform:translateY(0) !important; opacity:1 !important; pointer-events:auto !important; }
     body.page-enter { opacity:0; transform:translateY(50px); }
     body.page-exit { opacity:0!important; transform:translateY(-50px)!important; transition:all .4s ease; }
-    #hero, #hero *{opacity:1!important;transform:none!important}
     @media (prefers-reduced-motion: reduce){
       [data-aos] { opacity:1!important; transform:none!important; transition:none!important; }
     }
@@ -340,60 +339,40 @@
         const closeMenu   = document.getElementById('closeMenu');
         const links       = menuOverlay.querySelectorAll('a');
 
-        // --- Language toggle + normalized links (no index.html in URLs) ---
+        // --- Language toggle (idle) ---
         const langToggle = document.getElementById('langToggle');
         const logoLink   = document.getElementById('logoLink');
+        const deferWork  = (cb)=> (window.requestIdleCallback ? requestIdleCallback(cb) : setTimeout(cb,300));
+        const normalize = (p) => (p||'/').replace(/\/{2,}/g,'/').replace(/\/index\.html$/,'/').replace(/\/es\/index\.html$/,'/es/');
 
-        const normalize = (p) => {
-          p = (p || '/').replace(/\/{2,}/g,'/');
-          p = p.replace(/\/index\.html$/,'/');        // /index.html -> /
-          p = p.replace(/\/es\/index\.html$/,'/es/'); // /es/index.html -> /es/
-          return p;
-        };
+        const isES  = document.documentElement.lang && document.documentElement.lang.startsWith('es');
+        const path  = normalize(location.pathname);
+        const counterpartUrl = isES
+          ? normalize(path === '/es/' ? '/' : path.replace(/^\/es\//,'/'))
+          : normalize(path === '/' ? '/es/' : `/es${path}`);
 
-        const path = normalize(location.pathname);
-        const isES = path === '/es/' || path.startsWith('/es/');
-
-        // Build counterpart URL for current page
-        const counterpartUrl = (() => {
-          if (isES) {
-            // /es/ -> / ; /es/foo.html -> /foo.html
-            return normalize(path === '/es/' ? '/' : path.replace(/^\/es\//,'/'));
-          } else {
-            // / -> /es/ ; /foo.html -> /es/foo.html
-            return normalize(path === '/' ? '/es/' : `/es${path}`);
-          }
-        })();
-
-        // Button text/label
-        if (langToggle) {
+        if (langToggle){
           langToggle.textContent = isES ? 'English' : 'Español';
           langToggle.setAttribute('aria-label', isES ? 'Switch to English' : 'Cambiar a Español');
           langToggle.addEventListener('click', e => {
             e.preventDefault();
             try { localStorage.setItem('prefLang', isES ? 'en' : 'es'); } catch {}
             document.body.classList.add('page-exit');
-            setTimeout(() => { window.location.href = counterpartUrl; }, 300);
+            setTimeout(()=>{ window.location.href = counterpartUrl; }, 300);
           });
         }
 
-        // Logo goes to right home per language
-        if (logoLink) logoLink.href = isES ? '/es/' : '/';
-
-        // Ensure overlay menu links honor current language and drop index.html
-        links.forEach(a => {
-          const raw = a.getAttribute('href') || '';
-          if (/^https?:\/\//i.test(raw) || raw.startsWith('mailto:')) return;
-          let next = normalize(raw);
-          if (isES) {
-            // Prefix /es for local pages; "/" -> "/es/"
-            next = next === '/' ? '/es/' : (next.startsWith('/es/') ? next : `/es${next}`);
-          } else {
-            // Strip /es; "/es/" -> "/"
-            next = next.replace(/^\/es\/index\.html$/,'/').replace(/^\/es\//,'/');
-            next = normalize(next);
-          }
-          a.setAttribute('href', next);
+        // Defer non-critical DOM work until after first paint
+        deferWork(()=>{
+          if (logoLink) logoLink.href = isES ? '/es/' : '/';
+          document.querySelectorAll('#menuOverlay a, footer nav a').forEach(a=>{
+            const raw = a.getAttribute('href')||'';
+            if (/^https?:\/\//i.test(raw) || raw.startsWith('mailto:') || raw==='#') return;
+            let next = normalize(raw);
+            next = isES ? (next==='/' ? '/es/' : (next.startsWith('/es/') ? next : `/es${next}`))
+                        : normalize(next.replace(/^\/es\//,'/'));
+            a.setAttribute('href', next);
+          });
         });
         
         const lockScroll  = lock => body.style.overflow = lock ? 'hidden' : '';
