@@ -74,11 +74,13 @@
 
     <title>Sakai Capital | Enfoque</title>
   <!-- Styles -->
-  <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="preload" as="style" href="/assets/css/tailwind.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/tailwind.css"></noscript>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-ExtraBold.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-Black.woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/fonts.css">
-
+  <link rel="preload" as="style" href="/assets/css/fonts.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/css/fonts.css"></noscript>
+  
   <!-- AOS -->
   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
