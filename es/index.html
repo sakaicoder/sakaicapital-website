@@ -84,8 +84,10 @@
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-Black.woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/fonts.css">
   
-  <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- AOS CSS (async) -->
+  <link rel="preload" as="style" href="https://unpkg.com/aos@2.3.4/dist/aos.css" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"></noscript>
+
   <style>
     .menu-link { font-family:'Inter',system-ui,Arial,sans-serif; color:#113758; text-transform:uppercase; }
     @media (min-width:768px){
@@ -316,7 +318,7 @@
   </footer>
 
   <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <!-- Main JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
