@@ -1,0 +1,5 @@
+node_modules/
+tailwindcss-windows-x64.exe
+*.log
+npm-debug.log*
+Thumbs.db

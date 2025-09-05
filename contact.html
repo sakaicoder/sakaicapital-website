@@ -32,7 +32,7 @@
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
 
-<!-- Twitter Card -->
+  <!-- Twitter Card -->
   <meta name="twitter:card"       content="summary_large_image" />
   <meta name="twitter:title"      content="Sakai Capital | Contact" />
   <meta name="twitter:description" content="Sakai Capital is a private investment firm focused on the Mexican market. Business owners or brokers are encouraged to contact us if interested in a sale." />
@@ -40,6 +40,10 @@
     name="twitter:image"
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
+
+  <!--Pre-load hero poster-->
+  <link rel="preload" as="image" href="/assets/img/hero-index-poster.webp" fetchpriority="high">
+
 
   <!-- Schema.org structured data -->
    <script type="application/ld+json">
@@ -67,7 +71,7 @@
     <title>Sakai Capital | Contact</title>
     
   <!-- Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     .menu-link{font-family:"Arial Black",Arial,sans-serif;color:#113758;text-transform:uppercase;}
@@ -88,6 +92,7 @@
       [data-aos]{opacity:1!important;transform:none!important;transition:none!important;}
     }
   </style>
+  <noscript><style>body.page-enter{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="bg-gray-50 text-gray-900 page-enter">
   <!-- Header -->
@@ -120,7 +125,9 @@
   <section class="relative h-[40vh] -mt-20 overflow-hidden">
     <video id="heroVideo"
            src="assets/video/hero-index.mp4"
-           autoplay muted loop playsinline preload="auto"
+           poster="/assets/img/hero-index-poster.webp"
+           preload="none"
+           autoplay muted loop playsinline
            class="absolute inset-0 w-full h-full object-cover">
     </video>
     <div class="absolute top-20 inset-x-0 bottom-0 bg-black/00 flex items-center justify-center">
@@ -136,7 +143,7 @@
   <!-- Contact Intro -->
   <section class="container mx-auto px-6 py-16" data-aos="fade-up">
     <div class="max-w-2xl mx-auto space-y-6 text-gray-800">
-      <p class="text-lg" style=color:#113758;">
+      <p class="text-lg" style="color:#113758;">
         If you're a business owner or broker interested in learning more about us or our acquisition process, we'd love to connect with you - <a href="mailto:info@sakaicapital.com" class="underline">info@sakaicapital.com</a><br>
         <br>For all recruiting-related inquiries, contact <a href="mailto:recruiting@sakaicapital.com" class="underline">recruiting@sakaicapital.com</a><br><br>
         You can also use the form below to get in touch—we look forward to hearing from you.
@@ -191,68 +198,73 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const body = document.body;
-      requestAnimationFrame(() => body.classList.remove('page-enter'));
+      try {
+        const body = document.body;
+        requestAnimationFrame(() => body.classList.remove('page-enter'));
 
-      // Hero autoplay
-      const hv = document.getElementById('heroVideo');
-      if (hv) {
-        const tryPlay = () => hv.play().catch(() => {});
-        tryPlay();
-        document.addEventListener('touchstart', tryPlay, { once: true });
-      }
+        // Hero autoplay
+        const hv = document.getElementById('heroVideo');
+        if (hv) {
+          const tryPlay = () => hv.play().catch(() => {});
+          tryPlay();
+          document.addEventListener('touchstart', tryPlay, { once: true });
+        }
 
-      // Menu toggle
-      const menuToggle = document.getElementById('menuToggle');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const closeMenu = document.getElementById('closeMenu');
-      const links = menuOverlay.querySelectorAll('a');
-      const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
-      const toggleMenu = () => {
-        const open = menuOverlay.classList.toggle('open');
-        lockScroll(open);
-      };
-      menuToggle.addEventListener('click', toggleMenu);
-      closeMenu.addEventListener('click', toggleMenu);
-      links.forEach(a => a.addEventListener('click', e => {
-        e.preventDefault();
-        const href = a.href;
-        body.classList.add('page-exit');
-        if (menuOverlay.classList.contains('open')) toggleMenu();
-        setTimeout(() => window.location.href = href, 400);
-      }));
-
-      // AJAX form submission
-      const form = document.getElementById('contactForm');
-      const wrapper = document.getElementById('contactWrapper');
-      if (form) {
-        form.addEventListener('submit', async e => {
+        // Menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenu = document.getElementById('closeMenu');
+        const links = menuOverlay.querySelectorAll('a');
+        const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
+        const toggleMenu = () => {
+          const open = menuOverlay.classList.toggle('open');
+          lockScroll(open);
+        };
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        links.forEach(a => a.addEventListener('click', e => {
           e.preventDefault();
-          const data = new FormData(form);
-          try {
-            const res = await fetch(form.action, {
-              method: 'POST',
-              body: data,
-              headers: { 'Accept': 'application/json' }
-            });
-            if (!res.ok) throw new Error('Network error');
-            wrapper.innerHTML = `
-              <div class="text-center py-8">
-                <h4 class="text-xl font-semibold mb-2">Thank you!</h4>
-                <p>Thanks for reaching out!</p>
-              </div>`;
-          } catch {
-            wrapper.innerHTML = `
-              <div class="text-center py-8">
-                <h4 class="text-xl font-semibold mb-2">Oops!</h4>
-                <p>Please email us directly at <a href="mailto:info@sakaicapital.com" class="underline">info@sakaicapital.com</a>.</p>
-              </div>`;
-          }
-        });
-      }
+          const href = a.href;
+          body.classList.add('page-exit');
+          if (menuOverlay.classList.contains('open')) toggleMenu();
+          setTimeout(() => window.location.href = href, 400);
+        }));
 
-      // Init AOS
-      AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+        // AJAX form submission
+        const form = document.getElementById('contactForm');
+        const wrapper = document.getElementById('contactWrapper');
+        if (form) {
+          form.addEventListener('submit', async e => {
+            e.preventDefault();
+            const data = new FormData(form);
+            try {
+              const res = await fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              });
+              if (!res.ok) throw new Error('Network error');
+              wrapper.innerHTML = `
+                <div class="text-center py-8">
+                  <h4 class="text-xl font-semibold mb-2">Thank you!</h4>
+                  <p>Thanks for reaching out!</p>
+                </div>`;
+            } catch {
+              wrapper.innerHTML = `
+                <div class="text-center py-8">
+                  <h4 class="text-xl font-semibold mb-2">Oops!</h4>
+                  <p>Please email us directly at <a href="mailto:info@sakaicapital.com" class="underline">info@sakaicapital.com</a>.</p>
+                </div>`;
+            }
+          });
+        }
+
+        // Init AOS
+        AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+      } catch (e) {
+      console.error('Init error:', e);
+      document.body.classList.remove('page-enter');
+      }
     });
   </script>
 </body>

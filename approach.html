@@ -33,7 +33,7 @@
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
 
-<!-- Twitter Card -->
+  <!-- Twitter Card -->
   <meta name="twitter:card"       content="summary_large_image" />
   <meta name="twitter:title"      content="Sakai Capital | Approach" />
   <meta name="twitter:description" content="Sakai Capital's approach encourages collaborative transitions, with a commitment to preserving and growing your legacy." />
@@ -41,6 +41,9 @@
     name="twitter:image"
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
+  
+  <!--Pre-load hero poster-->
+  <link rel="preload" as="image" href="/assets/img/hero-approach-poster.webp" fetchpriority="high">
 
   <!-- Schema.org structured data -->
    <script type="application/ld+json">
@@ -67,7 +70,7 @@
 
     <title>Sakai Capital | Our Approach</title>
   <!-- Styles -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
 
   <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -114,6 +117,7 @@
       .acc-panel,.card-inner{transition:none!important;}
     }
   </style>
+  <noscript><style>body.page-enter{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body class="bg-gray-50 text-gray-900 page-enter">
   <!-- Header -->
@@ -147,7 +151,9 @@
   <video
     id="heroVideo"
     src="assets/video/hero-approach.mp4"
-    autoplay muted playsinline loop preload="auto"
+    poster="/assets/img/hero-approach-poster.webp"
+    preload="none"
+    autoplay muted playsinline loop
     class="absolute inset-0 w-full h-full object-cover"
   ></video>
   <div class="absolute top-20 inset-x-0 bottom-0 bg-black/60 flex items-center justify-center">
@@ -406,157 +412,162 @@
   <!-- Main JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const body = document.body;
-      requestAnimationFrame(()=> body.classList.remove('page-enter'));
+      try {
+        const body = document.body;
+        requestAnimationFrame(()=> body.classList.remove('page-enter'));
 
-      // Hero video autoplay
-      const hv = document.getElementById('heroVideo');
-      if (hv) {
-        const tryPlay = () => hv.play().catch(()=>{});
-        tryPlay();
-        document.addEventListener('touchstart', tryPlay, { once: true });
-      }
-
-      // Menu + page transitions
-      const menuToggle = document.getElementById('menuToggle');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const closeMenuBtn = document.getElementById('closeMenu');
-      const menuLinks = menuOverlay.querySelectorAll('a');
-      const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
-      const toggleMenu = () => {
-        const open = menuOverlay.classList.toggle('open');
-        lockScroll(open);
-      };
-      menuToggle.addEventListener('click', toggleMenu);
-      closeMenuBtn.addEventListener('click', toggleMenu);
-      menuLinks.forEach(link=>{
-        link.addEventListener('click', e=>{
-          e.preventDefault();
-          const href = link.getAttribute('href');
-          body.classList.add('page-exit');
-          if(menuOverlay.classList.contains('open')) toggleMenu();
-          setTimeout(()=> window.location.href = href, 400);
-        });
-      });
-
-      // FAB / panel
-      const fab = document.getElementById('contactFab');
-      const panel = document.getElementById('contactPanel');
-      const closePanelBtn = document.getElementById('closePanel');
-      const footer = document.getElementById('siteFooter');
-
-      const openPanel = () => { panel.classList.add('open'); lockScroll(true); };
-      const closePanel = () => { panel.classList.remove('open'); lockScroll(false); };
-
-      if (fab) fab.addEventListener('click', openPanel);
-      if (closePanelBtn) closePanelBtn.addEventListener('click', closePanel);
-
-      document.addEventListener('keydown', e=>{
-        if(e.key === 'Escape'){
-          if(menuOverlay.classList.contains('open')) toggleMenu();
-          if(panel.classList.contains('open')) closePanel();
+        // Hero video autoplay
+        const hv = document.getElementById('heroVideo');
+        if (hv) {
+          const tryPlay = () => hv.play().catch(()=>{});
+          tryPlay();
+          document.addEventListener('touchstart', tryPlay, { once: true });
         }
-      });
 
-            // AJAX form
-      const contactForm = document.getElementById('contactForm');
-      const thankYou    = document.getElementById('thankYouMsg');
-      if (contactForm) {
-        contactForm.addEventListener('submit', async e => {
-          e.preventDefault();
-          const data = new FormData(contactForm);
-          try {
-            const res = await fetch(contactForm.action, {
-              method: contactForm.method,
-              body: data,
-              headers: { 'Accept': 'application/json' }
-            });
-            if (res.ok) {
-              contactForm.classList.add('hidden');
-              thankYou.classList.remove('hidden');
-            } else {
-              alert('Submission failed. Please try again.');
-            }
-          } catch {
-            alert('Network error. Please try again.');
+        // Menu + page transitions
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const menuLinks = menuOverlay.querySelectorAll('a');
+        const lockScroll = (lock) => { body.style.overflow = lock ? 'hidden' : ''; };
+        const toggleMenu = () => {
+          const open = menuOverlay.classList.toggle('open');
+          lockScroll(open);
+        };
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        menuLinks.forEach(link=>{
+          link.addEventListener('click', e=>{
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            body.classList.add('page-exit');
+            if(menuOverlay.classList.contains('open')) toggleMenu();
+            setTimeout(()=> window.location.href = href, 400);
+          });
+        });
+
+        // FAB / panel
+        const fab = document.getElementById('contactFab');
+        const panel = document.getElementById('contactPanel');
+        const closePanelBtn = document.getElementById('closePanel');
+        const footer = document.getElementById('siteFooter');
+
+        const openPanel = () => { panel.classList.add('open'); lockScroll(true); };
+        const closePanel = () => { panel.classList.remove('open'); lockScroll(false); };
+
+        if (fab) fab.addEventListener('click', openPanel);
+        if (closePanelBtn) closePanelBtn.addEventListener('click', closePanel);
+
+        document.addEventListener('keydown', e=>{
+          if(e.key === 'Escape'){
+            if(menuOverlay.classList.contains('open')) toggleMenu();
+            if(panel.classList.contains('open')) closePanel();
           }
         });
-      }
-      
-      // Hide FAB when footer visible
-      if (footer && fab) {
-        const io = new IntersectionObserver(([entry])=>{
-          fab.classList.toggle('opacity-0', entry.isIntersecting);
-          fab.classList.toggle('pointer-events-none', entry.isIntersecting);
-        }, { threshold:0.1 });
-        io.observe(footer);
-      }
 
-      // Tap-to-flip process cards
-      document.querySelectorAll('.card').forEach(card=>{
-        const inner = card.querySelector('.card-inner');
-        card.addEventListener('click', ()=> inner.classList.toggle('flipped'));
-      });
-
-      // Accordion logic
-      const items = document.querySelectorAll('#whyAccordion .accordion-item');
-      items.forEach((item, idx)=>{
-        const btn   = item.querySelector('[data-acc-btn]');
-        const panel = item.querySelector('[data-acc-panel]');
-        const chev  = item.querySelector('[data-acc-chevron]');
-
-        if(idx === 0){
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-          panel.classList.add('open');
+              // AJAX form
+        const contactForm = document.getElementById('contactForm');
+        const thankYou    = document.getElementById('thankYouMsg');
+        if (contactForm) {
+          contactForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const data = new FormData(contactForm);
+            try {
+              const res = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              });
+              if (res.ok) {
+                contactForm.classList.add('hidden');
+                thankYou.classList.remove('hidden');
+              } else {
+                alert('Submission failed. Please try again.');
+              }
+            } catch {
+              alert('Network error. Please try again.');
+            }
+          });
+        }
+        
+        // Hide FAB when footer visible
+        if (footer && fab) {
+          const io = new IntersectionObserver(([entry])=>{
+            fab.classList.toggle('opacity-0', entry.isIntersecting);
+            fab.classList.toggle('pointer-events-none', entry.isIntersecting);
+          }, { threshold:0.1 });
+          io.observe(footer);
         }
 
-        btn.addEventListener('click', ()=>{
-          if(panel.classList.contains('open')) return;
+        // Tap-to-flip process cards
+        document.querySelectorAll('.card').forEach(card=>{
+          const inner = card.querySelector('.card-inner');
+          card.addEventListener('click', ()=> inner.classList.toggle('flipped'));
+        });
 
-          // open this
-          panel.classList.add('open');
-          panel.style.maxHeight = panel.scrollHeight + 'px';
-          chev.classList.add('rotate-180');
+        // Accordion logic
+        const items = document.querySelectorAll('#whyAccordion .accordion-item');
+        items.forEach((item, idx)=>{
+          const btn   = item.querySelector('[data-acc-btn]');
+          const panel = item.querySelector('[data-acc-panel]');
+          const chev  = item.querySelector('[data-acc-chevron]');
 
-          // close others
-          items.forEach(other=>{
-            if(other === item) return;
-            const p = other.querySelector('[data-acc-panel]');
-            const c = other.querySelector('[data-acc-chevron]');
-            if(p.classList.contains('open')){
-              p.style.maxHeight = p.scrollHeight + 'px';
-              requestAnimationFrame(()=>{ p.style.maxHeight = '0'; });
-              p.classList.remove('open');
-              c.classList.remove('rotate-180');
+          if(idx === 0){
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            panel.classList.add('open');
+          }
+
+          btn.addEventListener('click', ()=>{
+            if(panel.classList.contains('open')) return;
+
+            // open this
+            panel.classList.add('open');
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            chev.classList.add('rotate-180');
+
+            // close others
+            items.forEach(other=>{
+              if(other === item) return;
+              const p = other.querySelector('[data-acc-panel]');
+              const c = other.querySelector('[data-acc-chevron]');
+              if(p.classList.contains('open')){
+                p.style.maxHeight = p.scrollHeight + 'px';
+                requestAnimationFrame(()=>{ p.style.maxHeight = '0'; });
+                p.classList.remove('open');
+                c.classList.remove('rotate-180');
+              }
+            });
+          });
+
+          // tidy inline max-height after transitions
+          panel.addEventListener('transitionend', e=>{
+            if(e.propertyName !== 'max-height') return;
+            if(panel.classList.contains('open')){
+              panel.style.maxHeight = panel.scrollHeight + 'px';
+            }else{
+              panel.style.maxHeight = '0';
+            }
+          });
+
+          window.addEventListener('resize', ()=>{
+            if(panel.classList.contains('open')){
+              panel.style.maxHeight = panel.scrollHeight + 'px';
             }
           });
         });
 
-        // tidy inline max-height after transitions
-        panel.addEventListener('transitionend', e=>{
-          if(e.propertyName !== 'max-height') return;
-          if(panel.classList.contains('open')){
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-          }else{
-            panel.style.maxHeight = '0';
-          }
+        // AOS
+        AOS.init({
+          once:true,
+          duration:600,
+          easing:'ease-out-cubic',
+          disable:false
         });
-
-        window.addEventListener('resize', ()=>{
-          if(panel.classList.contains('open')){
-            panel.style.maxHeight = panel.scrollHeight + 'px';
-          }
-        });
-      });
-
-      // AOS
-      AOS.init({
-        once:true,
-        duration:600,
-        easing:'ease-out-cubic',
-        disable:false
-      });
-      window.addEventListener('load', ()=> AOS.refreshHard());
+        window.addEventListener('load', ()=> AOS.refreshHard());
+      } catch (e) {
+      console.error('Init error:', e);
+      document.body.classList.remove('page-enter');
+      }
     });
   </script>
 </body>

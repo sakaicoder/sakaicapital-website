@@ -44,6 +44,10 @@
     content="https://www.sakaicapital.com/assets/img/og.png"
   />
 
+  <!--  Preload Hero Poster -->
+  <link rel="preload" as="image" href="/assets/img/hero-index-poster.webp" fetchpriority="high">
+
+
   <!-- Schema.org structured data -->
    <script type="application/ld+json">
     {
@@ -70,7 +74,7 @@
     <title>Sakai Capital | Home</title>
 
   <!--Styles-->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/tailwind.css">
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
@@ -98,7 +102,10 @@
       [data-aos] { opacity:1!important; transform:none!important; transition:none!important; }
     }
   </style>
+  <noscript><style>body.page-enter{opacity:1!important;transform:none!important}</style></noscript>
 </head>
+
+
 <body class="bg-gray-50 text-gray-900 page-enter">
 
   <!-- Header -->
@@ -131,7 +138,9 @@
   <section class="relative h-[100vh] md:h-[70vh] -mt-20 overflow-hidden">
     <video id="heroVideo"
            src="assets/video/hero-index.mp4"
-           autoplay muted playsinline loop preload="auto"
+           poster="/assets/img/hero-index-poster.webp"
+           preload="none"
+           autoplay muted playsinline loop
            class="absolute inset-0 w-full h-full object-cover">
     </video>
     <div class="absolute inset-0 bg-black/00 flex items-center">
@@ -290,84 +299,90 @@
   <!-- Main JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const body = document.body;
-      requestAnimationFrame(() => body.classList.remove('page-enter'));
+      try {
+        const body = document.body;
+        requestAnimationFrame(() => body.classList.remove('page-enter'));
 
-      // Hero autoplay
-      const hv = document.getElementById('heroVideo');
-      if (hv) {
-        const tryPlay = () => hv.play().catch(() => {});
-        tryPlay();
-        document.addEventListener('touchstart', tryPlay, { once: true });
-      }
+        // Hero autoplay
+        const hv = document.getElementById('heroVideo');
+        if (hv) {
+          const tryPlay = () => hv.play().catch(() => {});
+          tryPlay();
+          document.addEventListener('touchstart', tryPlay, { once: true });
+        }
 
-      // Menu toggle
-      const menuToggle  = document.getElementById('menuToggle');
-      const menuOverlay = document.getElementById('menuOverlay');
-      const closeMenu   = document.getElementById('closeMenu');
-      const links       = menuOverlay.querySelectorAll('a');
-      const lockScroll  = lock => body.style.overflow = lock ? 'hidden' : '';
-      const toggleMenu  = () => { const o = menuOverlay.classList.toggle('open'); lockScroll(o); };
-      menuToggle.addEventListener('click', toggleMenu);
-      closeMenu.addEventListener('click', toggleMenu);
-      links.forEach(a => a.addEventListener('click', e => {
-        e.preventDefault();
-        const href = a.getAttribute('href');
-        body.classList.add('page-exit');
-        if (menuOverlay.classList.contains('open')) toggleMenu();
-        setTimeout(() => window.location.href = href, 400);
-      }));
-
-      // FAB & Contact Panel
-      const fab         = document.getElementById('contactFab');
-      const panel       = document.getElementById('contactPanel');
-      const closePanel  = document.getElementById('closePanel');
-      fab.addEventListener('click', () => {
-        panel.classList.toggle('open');
-        lockScroll(panel.classList.contains('open'));
-      });
-      closePanel.addEventListener('click', () => {
-        panel.classList.remove('open');
-        lockScroll(false);
-      });
-
-      // AJAX form
-      const contactForm = document.getElementById('contactForm');
-      const thankYou    = document.getElementById('thankYouMsg');
-      if (contactForm) {
-        contactForm.addEventListener('submit', async e => {
+        // Menu toggle
+        const menuToggle  = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenu   = document.getElementById('closeMenu');
+        const links       = menuOverlay.querySelectorAll('a');
+        const lockScroll  = lock => body.style.overflow = lock ? 'hidden' : '';
+        const toggleMenu  = () => { const o = menuOverlay.classList.toggle('open'); lockScroll(o); };
+        menuToggle.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        links.forEach(a => a.addEventListener('click', e => {
           e.preventDefault();
-          const data = new FormData(contactForm);
-          try {
-            const res = await fetch(contactForm.action, {
-              method: contactForm.method,
-              body: data,
-              headers: { 'Accept': 'application/json' }
-            });
-            if (res.ok) {
-              contactForm.classList.add('hidden');
-              thankYou.classList.remove('hidden');
-            } else {
-              alert('Submission failed. Please try again.');
-            }
-          } catch {
-            alert('Network error. Please try again.');
-          }
+          const href = a.getAttribute('href');
+          body.classList.add('page-exit');
+          if (menuOverlay.classList.contains('open')) toggleMenu();
+          setTimeout(() => window.location.href = href, 400);
+        }));
+
+        // FAB & Contact Panel
+        const fab         = document.getElementById('contactFab');
+        const panel       = document.getElementById('contactPanel');
+        const closePanel  = document.getElementById('closePanel');
+        fab.addEventListener('click', () => {
+          panel.classList.toggle('open');
+          lockScroll(panel.classList.contains('open'));
         });
-      }
+        closePanel.addEventListener('click', () => {
+          panel.classList.remove('open');
+          lockScroll(false);
+        });
 
-      // Hide FAB on footer
-      const footer = document.getElementById('siteFooter');
-      if (footer && fab) {
-        new IntersectionObserver(([e]) => {
-          fab.classList.toggle('opacity-0', e.isIntersecting);
-          fab.classList.toggle('pointer-events-none', e.isIntersecting);
-        }, { threshold: 0.1 }).observe(footer);
-      }
+        // AJAX form
+        const contactForm = document.getElementById('contactForm');
+        const thankYou    = document.getElementById('thankYouMsg');
+        if (contactForm) {
+          contactForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const data = new FormData(contactForm);
+            try {
+              const res = await fetch(contactForm.action, {
+                method: contactForm.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              });
+              if (res.ok) {
+                contactForm.classList.add('hidden');
+                thankYou.classList.remove('hidden');
+              } else {
+                alert('Submission failed. Please try again.');
+              }
+            } catch {
+              alert('Network error. Please try again.');
+            }
+          });
+        }
 
-      // Init AOS
-      AOS.init({ once:true, duration:600, easing:'ease-out-cubic' });
-      window.addEventListener('load', () => AOS.refreshHard());
+        // Hide FAB on footer
+        const footer = document.getElementById('siteFooter');
+        if (footer && fab) {
+          new IntersectionObserver(([e]) => {
+            fab.classList.toggle('opacity-0', e.isIntersecting);
+            fab.classList.toggle('pointer-events-none', e.isIntersecting);
+          }, { threshold: 0.1 }).observe(footer);
+        }
+
+        // Init AOS
+        AOS.init({ once:true, duration:600, easing:'ease-out-cubic' });
+        window.addEventListener('load', () => AOS.refreshHard());
+    } catch (e) {
+        console.error('Init error:', e);
+        document.body.classList.remove('page-enter');
+      }
+    
     });
   </script>
 </body>
