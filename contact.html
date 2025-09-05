@@ -72,9 +72,13 @@
     
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/css/tailwind.css">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-ExtraBold.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-Black.woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
-    .menu-link{font-family:"Arial Black",Arial,sans-serif;color:#113758;text-transform:uppercase;}
+    .menu-link{font-family:'Inter',system-ui,Arial,sans-serif;color:#113758;text-transform:uppercase;}
     @media (min-width:768px){
       .menu-link{position:relative;}
       .menu-link::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:#113758;transition:width .3s ease;}
@@ -133,7 +137,7 @@
     <div class="absolute top-20 inset-x-0 bottom-0 bg-black/00 flex items-center justify-center">
       <div class="text-center text-white px-6" data-aos="fade-up">
         <h1 class="font-black uppercase text-4xl sm:text-5xl md:text-6xl leading-tight"
-            style="font-family:'Arial Black',Arial,sans-serif; color:#ffffff;">
+            style="font-family:'Inter',system-ui,Arial,sans-serif; color:#ffffff;">
           Get in touch
         </h1>
       </div>
