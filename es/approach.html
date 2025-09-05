@@ -80,7 +80,8 @@
   <link rel="stylesheet" href="/assets/css/fonts.css">
 
   <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
 
   <style>
     .menu-link{font-family:'Inter',system-ui,Arial,sans-serif;color:#113758;text-transform:uppercase;}
@@ -168,15 +169,15 @@
   </div>
 
   <!-- Hero -->
-<section class="relative h-[60vh] -mt-20 overflow-hidden">
+  <section id="hero" class="relative h-[50vh] -mt-20 overflow-hidden bg-cover bg-center" style="background-image:url('/assets/img/hero-approach-poster.webp')">
   <video
-    id="heroVideo"
-    src="assets/video/hero-approach.mp4"
-    poster="/assets/img/hero-approach-poster.webp"
-    preload="none"
-    autoplay muted playsinline loop
-    class="absolute inset-0 w-full h-full object-cover"
-  ></video>
+      id="heroVideo"
+      poster="/assets/img/hero-approach-poster.webp"
+      preload="none"
+      autoplay muted playsinline loop
+      class="absolute inset-0 w-full h-full object-cover">
+    <source src="/assets/video/hero-approach.mp4" type="video/mp4">
+  </video>
   <div class="absolute top-20 inset-x-0 bottom-0 bg-black/60 flex items-center justify-center">
     <div class="text-center text-white px-6" data-aos="fade-up">
       <h1
@@ -428,7 +429,7 @@
   </footer>
 
   <!-- AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
   <!-- Main JS -->
   <script>
