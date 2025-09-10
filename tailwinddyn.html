@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 
   <!-- Viewport -->
@@ -18,9 +18,9 @@
   <!--Primary SEO-->
   <meta
     name="description"
-    content="Sakai Capital es un fondo de inversión enfocado en el mercado Mexicano que busca adquirir y operar una empresa mediana. Si eres un propietario de empresa o agente interesado en una venta, ponte en contacto con nosotros."
+    content="Sakai Capital is a Mexico based search fund seeking to acquire and operate a mid-sized company. Business owners or brokers are encouraged to contact us if interested in a sale."
   />
-  <link rel="canonical" href="https://www.sakaicapital.com/es/">
+  <link rel="canonical" href="https://www.sakaicapital.com/">
   <link rel="alternate" hreflang="en" href="https://www.sakaicapital.com/">
   <link rel="alternate" hreflang="es" href="https://www.sakaicapital.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.sakaicapital.com/">
@@ -28,11 +28,11 @@
 <!--OpenGraph-->
   <meta property="og:type"   content="website" />
   <meta property="og:site_name" content="Sakai Capital" />
-  <meta property="og:url"    content="https://www.sakaicapital.com/es/"/>
-  <meta property="og:title"  content="Sakai Capital | Capital Privado - Mexico" />
+  <meta property="og:url"    content="https://www.sakaicapital.com/"/>
+  <meta property="og:title"  content="Sakai Capital | Private Investment Firm - Mexico" />
   <meta
     property="og:description"
-    content="Sakai Capital es un fondo de inversión enfocado en el mercado Mexicano que busca adquirir y operar una empresa mediana. Si eres un propietario de empresa o agente interesado en una venta, ponte en contacto con nosotros."
+    content="Sakai Capital is a Mexico based search fund seeking to acquire and operate a mid-sized company."
   />
   <meta
     property="og:image"
@@ -41,8 +41,8 @@
 
 <!-- Twitter Card -->
   <meta name="twitter:card"       content="summary_large_image" />
-  <meta name="twitter:title"      content="Sakai Capital | Capital Privado - Mexico" />
-  <meta name="twitter:description" content="Sakai Capital es un fondo de inversión enfocado en el mercado Mexicano que busca adquirir y operar una empresa mediana. Si eres un propietario de empresa o agente interesado en una venta, ponte en contacto con nosotros." />
+  <meta name="twitter:title"      content="Sakai Capital | Private Investment Firm - Mexico" />
+  <meta name="twitter:description" content="Sakai Capital is a Mexico based search fund seeking to acquire and operate a mid-sized company." />
   <meta
     name="twitter:image"
     content="https://www.sakaicapital.com/assets/img/og.png"
@@ -71,25 +71,29 @@
     "@context":"https://schema.org",
     "@type":"WebSite",
     "name":"Sakai Capital",
-    "inLanguage":"es",
-    "url":"https://www.sakaicapital.com/es/"
+    "inLanguage":"en",
+    "url":"https://www.sakaicapital.com/"
     }
     </script>
 
-    <title>Sakai Capital | Capital Privado - Mexico</title>
+    <title>Sakai Capital | Private Investment Firm - Mexico</title>
 
   <!--Styles-->
-  <link rel="preload" as="style" href="/assets/css/tailwind.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/css/tailwind.css"></noscript>
+<script>
+  tailwind.config = {
+    theme: { extend: {} },
+    // enable arbitrary utilities like grid-cols-[repeat(auto-fit,...)]
+  }
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-ExtraBold.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/Inter-Black.woff2" crossorigin>
   <link rel="preload" as="style" href="/assets/css/fonts.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/css/fonts.css"></noscript>
   
-  <!-- AOS CSS (async) -->
+  <!-- AOS CSS -->
   <link rel="preload" as="style" href="https://unpkg.com/aos@2.3.4/dist/aos.css" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"></noscript>
-
   <style>
     .menu-link { font-family:'Inter',system-ui,Arial,sans-serif; color:#113758; text-transform:uppercase; }
     @media (min-width:768px){
@@ -116,6 +120,7 @@
     }
   </style>
   <noscript><style>body.page-enter{opacity:1!important;transform:none!important}</style></noscript>
+
 </head>
 
 
@@ -152,10 +157,10 @@
   <div id="menuOverlay" class="fixed inset-0 bg-white/70 backdrop-blur transition-all duration-500 overflow-hidden">
     <button id="closeMenu" class="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-3xl" aria-label="Close menu">✕</button>
     <nav class="flex flex-col items-start pl-8 space-y-8 pt-28 text-4xl sm:text-5xl md:text-8xl font-black tracking-wide">
-      <a href="/"    class="menu-link">Inicio</a>
-      <a href="/team.html"     class="menu-link">Equipo</a>
-      <a href="/approach.html" class="menu-link">Enfoque</a>
-      <a href="/contact.html"  class="menu-link">Contáctanos</a>
+      <a href="/"    class="menu-link">Home</a>
+      <a href="/team.html"     class="menu-link">Our Team</a>
+      <a href="/approach.html" class="menu-link">Our Approach</a>
+      <a href="/contact.html"  class="menu-link">Contact</a>
     </nav>
   </div>
 
@@ -175,7 +180,7 @@
           SAKAI<br>CAPITAL
         </h1>
         <h3 class="text-2xl max-w-xl mt-4">
-          Tu legado, <b>nuestro compromiso</b>
+          Your legacy, <b>our commitment</b>
         </h3>
       </div>
     </div>
@@ -185,9 +190,9 @@
   <section class="container mx-auto px-6 py-10">
     <div class="flex flex-col md:flex-row md:items-center md:gap-12">
       <div class="md:w-[100%]" data-aos="fade-up">
-        <h2 class="headline text-5xl mb-6 font-black ">ACERCA DE NOSOTROS</h2>
+        <h2 class="headline text-5xl mb-6 font-black ">ABOUT US</h2>
         <p class="leading-relaxed text-2xl text-gray-800">
-          Sakai Capital es una <b>firma de inversión privada</b> dedicada a adquirir y operar <b>una empresa mediana de alto potencial</b> en México. Adoptamos un enfoque de largo plazo y de gestión activa, comprometidos a impulsar el crecimiento mientras honramos el legado de las compañías en las que invertimos. Nuestro objetivo es generar valor sostenible para empleados, clientes y accionistas. 
+          Sakai Capital is a <b>private investment firm</b> dedicated to acquiring and operating <b>one exceptional mid-sized company</b> in Mexico. We take a long-term, hands-on approach to ownership—committed to accelerating growth while honoring the legacy of the businesses we invest in. Our goal is to create enduring value for employees, customers, and stakeholders alike. 
         </p>
       </div>
       <!--
@@ -200,87 +205,102 @@
     </div>
   </section>
 
-  <!-- Section 2: Who We Are? -->
-  <section class="bg-[#cad1ea] py-24">
-    <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-12">
-      <!-- Text first on mobile, second on desktop -->
-      <div class="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-up">
-        <h2 class="headline text-5xl sm:text-5xl font-black mb-6" style="font-family:'Inter',system-ui,Arial,sans-serif;">          
-          QUIÉNES SOMOS
-        </h2>
-        <p class="leading-relaxed text-lg text-gray-800">
-          Somos un equipo de emprendedores y operadores respaldados por una red global de inversionistas con amplia experiencia en México y mercados emergentes. No solo aportamos capital; nos comprometemos con ejecución operativa y dirección estratégica para asegurar el legado de las empresas.
-        </p>
-        <p class="leading-relaxed text-lg text-gray-800">
-          <br>El fondo está liderado por dos socios operadores, Adela Kably y Giancarlo Solórzano, con más de 15 años de experiencia en la asesoría de negocios. Cuentan con el respaldo y acompañamiento cercano de más de diez inversionistas de prestigio, distribuidos en seis países. 
-        </p>
-      </div>
-
-      <!-- Image full‑width on mobile, half on desktop -->
-      <div class="w-full lg:w-1/2 order-2 lg:order-1" data-aos="fade-right" data-aos-delay="150">
-        <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
-          <img
-            src="assets/img/index-img/section2.webp"
-            alt="Who We Are"
-            class="w-full h-full object-cover"
-          />
-        </div>
+<!-- Section 2: Who We Are (full-height, left-bleed image, slower + blue overlay) -->
+<section class="bg-[#cad1ea] py-24 lg:py-0">
+  <div class="grid lg:grid-cols-12 lg:items-stretch">
+    <!-- Image column -->
+    <div
+      class="order-2 lg:order-1 h-72 lg:h-auto lg:col-span-6 relative bg-cover bg-center"
+      style="background-image:url('/assets/img/index-img/section2.jpg')"
+      data-aos="fade-right" data-aos-delay="120" data-aos-duration="1300">
+      <!-- overlay slides in after -->
+      <div
+        class="absolute inset-0 pointer-events-none bg-[#113758]/35"
+        data-aos="fade-right" data-aos-delay="850" data-aos-duration="900">
       </div>
     </div>
-  </section>
 
-  <!-- Section 3: What We Seek -->
-  <!-- Section 3: WHAT WE LOOK FOR (left header on desktop, top on mobile) -->
-  <section class="bg-[#113758] text-white py-24" data-aos="fade-up">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
-      <h2 class="headline text-4xl sm:text-5xl font-black mb-6 lg:mb-0 lg:col-span-4 lg:self-center" style="color:#fff">
-        CRITERIOS DE INVERSIÓN
+    <!-- Text column -->
+    <div class="order-1 lg:order-2 lg:col-span-6 px-6 lg:px-12 py-0 lg:py-24">
+      <h2 class="headline text-5xl font-black mb-6" style="font-family:'Inter',system-ui,Arial,sans-serif;">
+        WHO WE ARE
       </h2>
-        <!-- Grid -->
-        <div class="lg:col-span-6 grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))] gap-2 sm:gap-3 md:gap-5 place-items-center">
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Propiedad</span>
-            <p class="text-[14px] leading-tight mt-1">Estructura concentrada para una adquisición mayoritaria</p>
-          </div>    
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Tamaño</span>
-            <p class="text-[14px] leading-tight mt-1">EBITDA entre $40M - $160M MXN</p>
-          </div>          
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Modelo de Negocios</span>
-            <p class="text-[14px] leading-tight mt-1">Ingresos recurrentes &amp; predecibles</p>
-          </div>
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Ingresos</span>
-            <p class="text-[14px] leading-tight mt-1">≥ $300M MXN</p>
-          </div>
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Rentabilidad</span>
-            <p class="text-[14px] leading-tight mt-1">EBITDA ≥ 15%</p>
-          </div>
-          <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
-            <span class="text-xl font-black leading-none">Mercado</span>
-            <p class="text-[14px] leading-tight mt-1">Operaciones en México; mercado en crecimiento</p>
-          </div>
+      <p class="leading-relaxed text-lg text-gray-800">
+        We are a team of passionate entrepreneurs and operators, backed by a network of world-class global investors with deep expertise in Mexico and emerging markets. Our experience spans founding, scaling, and transforming companies across industries. We bring not just capital, but the operational commitment and strategic guidance needed to help businesses thrive.
+      </p>
+      <p class="leading-relaxed text-lg text-gray-800 mt-4">
+        The firm is led by two managing partners with a proven track record <b>Adela Kably</b> and <b>Giancarlo Solorzano</b>, with the backing and close support of over ten renowned investors spanning six countries.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Section 3: WHAT WE LOOK FOR (left header on desktop, top on mobile) -->
+<section class="bg-[#113758] text-white py-24" data-aos="fade-up">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+      <h2 class="headline text-white text-4xl sm:text-5xl font-black mb-6 lg:mb-0 lg:col-span-4 lg:self-center">
+        OUR INVESTMENT CRITERIA
+      </h2>
+      <!-- Grid -->
+      <div class="lg:col-span-8 grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-2 sm:gap-3 md:gap-4 place-items-center">
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Revenue</span>
+          <p class="text-[11px] leading-tight mt-1">≥ MXN $300M</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Profitability</span>
+          <p class="text-[11px] leading-tight mt-1">EBITDA ≥ 15%</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Business Model</span>
+          <p class="text-[11px] leading-tight mt-1">Recurring &amp; predictable</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Market</span>
+          <p class="text-[11px] leading-tight mt-1">Large, growing TAM</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Geography</span>
+          <p class="text-[11px] leading-tight mt-1">Operations in Mexico</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Ownership</span>
+          <p class="text-[11px] leading-tight mt-1">Majority acquisition</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Customers</span>
+          <p class="text-[11px] leading-tight mt-1">Low concentration risk</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Financials</span>
+          <p class="text-[11px] leading-tight mt-1">Clean, auditable records</p>
+        </div>
+        <div class="w-full aspect-square rounded-xl border border-white/70 p-3 flex flex-col items-center justify-center text-center hover:bg-white/5">
+          <span class="text-sm font-black leading-none">Growth</span>
+          <p class="text-[11px] leading-tight mt-1">Organic &amp; M&amp;A runway</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
 
   <!-- Section 4: What We Offer? -->
   <section class="container mx-auto px-6 py-24">
     <div class="flex flex-col md:flex-row md:items-center md:gap-12">
       <div class="md:w-[60%]" data-aos="fade-up">
-        <h2 class="headline text-5xl mb-6 font-black">QUÉ OFRECEMOS</h2>
+        <h2 class="headline text-5xl mb-6 font-black">WHAT WE OFFER</h2>
         <p class="leading-relaxed text-gray-800 text-lg">
-          Sakai Capital ofrece una solución de sucesión a la medida para empresarios que buscan dejar su empresa en manos experimentadas y de confianza, ya sea para retirarse, disminuir su participación o prepararse para su siguiente oportunidad. Ofrecemos rapidez, flexibilidad y un liderazgo activo desde el primer día, con el respaldo de inversionistas globales. Nuestro compromiso: preservar lo que hace grande a la empresa y construir un futuro sólido y escalable.
+          Sakai Capital offers a tailored succession solution for business owners ready to transition their company into experienced, trustworthy hands—whether stepping back, retiring, or planning for the next phase of growth. We provide speed, flexibility, and hands-on leadership from day one, along with the support of global investors. Our promise: preserve what makes the business great, while building a stronger, more scalable future.
         </p>
       </div>
       <div class="md:w-[40%] mt-10 md:mt-0" data-aos="fade-left" data-aos-delay="150">
         <div class="w-full h-72 bg-gray-200 rounded-2xl shadow-2xl overflow-hidden flex items-center justify-center">
-          <img src="assets/img/index-img/section4.webp" alt="What We Offer?" class="w-full h-full object-cover" />
+          <img src="assets/img/index-img/section4.jpg" alt="What We Offer?" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
@@ -299,7 +319,7 @@
        class="fixed bottom-0 right-0 w-full max-w-md transition-all duration-300 z-[70]">
     <div class="bg-white rounded-t-2xl shadow-2xl p-6 relative">
       <button id="closePanel" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" aria-label="Close">✕</button>
-      <h4 class="text-2xl font-semibold mb-4">Contáctanos</h4>
+      <h4 class="text-2xl font-semibold mb-4">Get in Touch</h4>
 
       <!-- AJAX form -->
       <form id="contactForm"
@@ -307,14 +327,14 @@
             method="POST"
             class="space-y-4">
         <input type="hidden" name="_captcha" value="false" />
-        <input type="text"   name="name"    placeholder="Nombre"    class="w-full border rounded px-3 py-2" required />
-        <input type="email"  name="email"   placeholder="Correo"   class="w-full border rounded px-3 py-2" required />
-        <textarea name="message" placeholder="Mensaje" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
+        <input type="text"   name="name"    placeholder="Name"    class="w-full border rounded px-3 py-2" required />
+        <input type="email"  name="email"   placeholder="Email"   class="w-full border rounded px-3 py-2" required />
+        <textarea name="message" placeholder="Message" class="w-full border rounded px-3 py-2" rows="4" required></textarea>
         <button type="submit" class="w-full bg-[#113758] text-white py-2 rounded hover:opacity-90">Send</button>
       </form>
 
       <div id="thankYouMsg" class="hidden text-center text-lg font-semibold text-[#113758] p-6">
-        Gracias por contactarnos!
+        Thanks for reaching out!
       </div>
     </div>
   </div>
@@ -323,10 +343,10 @@
   <footer id="siteFooter" class="bg-[#113758] text-white mt-24 py-16">
     <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-start md:justify-between gap-12">
       <nav class="space-y-3 text-sm uppercase tracking-wide">
-        <a href="/es/" class="block hover:underline">Inicio</a>
-        <a href="/es/team.html" class="block hover:underline">Equipo</a>
-        <a href="/es/approach.html" class="block hover:underline">Enfoque</a>
-        <a href="/es/contact.html" class="block hover:underline">Contáctanos</a>
+        <a href="/" class="block hover:underline">Home</a>
+        <a href="/team.html" class="block hover:underline">Our Team</a>
+        <a href="/approach.html" class="block hover:underline">Our Approach</a>
+        <a href="/contact.html" class="block hover:underline">Contact</a>
       </nav>
       <div class="space-y-1">
         <p class="font-semibold text-lg">Sakai Capital LLC </p>
@@ -342,7 +362,7 @@
           <img src="assets/img/footer-logo.png" alt="Sakai Capital footer logo"
                class="max-h-full max-w-full object-contain">
         </div>
-        <p class="text-xs opacity-80 mt-1">&copy; Sakai Capital. Todos los derechos reservados.</p>
+        <p class="text-xs opacity-80 mt-1">&copy; Sakai Capital. All rights reserved.</p>
       </div>
     </div>
   </footer>
