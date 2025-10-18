@@ -273,10 +273,10 @@
     </div>
 
     <!-- Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="flex flex-col md:flex-row md:justify-center md:gap-x-10 gap-y-10">
       <!-- Adela -->
-      <div class="team-card relative h-[32rem] rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-right" data-aos-delay="0">
-        <img src="assets/img/team/adela.jpg" alt="Adela Kably Mussali" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="team-card relative h-[28rem] w-full sm:w-[28rem] md:w-[32rem] shrink-0 rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-right" data-aos-delay="0">
+      <img src="assets/img/team/adela.jpg" alt="Adela Kably Mussali" class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-black/20"></div>
 
         <!-- Name ribbon -->
@@ -304,7 +304,7 @@
       </div>
 
       <!-- Giancarlo -->
-      <div class="team-card relative h-[32rem] rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-left" data-aos-delay="100">
+        <div class="team-card relative h-[28rem] w-full sm:w-[28rem] md:w-[32rem] shrink-0 rounded-2xl shadow-xl overflow-hidden cursor-pointer group" data-bio-card data-aos="fade-right" data-aos-delay="100">
         <img src="assets/img/team/giancarlo.jpg" alt="Giancarlo Solórzano Picasso" class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-black/20"></div>
 
@@ -331,6 +331,104 @@
       </div>
     </div>
   </section>
+
+  <!-- Sakai Analysts -->
+<section id="analysts" class="container mx-auto px-6 pt-4 pb-12" data-aos="fade-up">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-start sm:space-x-12 mb-6">
+  <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-wide mb-4 sm:mb-0 shrink-0"
+      style="font-family:'Inter',system-ui,Arial,sans-serif;color:#113758;">
+    Analyst <span class="hidden sm:inline"><br></span> Team
+  </h3>
+
+
+    <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-8">
+      <!-- Analyst 1 -->
+      <li>
+        <button class="group relative flex flex-col items-center text-center focus:outline-none">
+          <div class="relative">
+            <img
+              src="assets/img/team/analysts/analyst1.webp"
+              alt="Matías Karam"
+              class="w-40 sm:w-60 aspect-square rounded-full object-cover
+                    transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]
+                    motion-reduce:transition-none" />
+
+            <div class="absolute inset-0 rounded-full flex items-center justify-center
+                        bg-black/40 text-white text-xs sm:text-lg font-semibold
+                        opacity-0 transition duration-300
+                        group-hover:opacity-100 group-focus-within:opacity-100
+                        motion-reduce:transition-none">
+              Matías Karam
+            </div>
+          </div>
+        </button>
+      </li>
+      <!-- Analyst 2 -->
+      <li>
+        <button class="group relative flex flex-col items-center text-center focus:outline-none">
+          <div class="relative">
+            <img
+              src="assets/img/team/analysts/analyst2.webp"
+              alt="Gerardo Espinosa"
+              class="w-40 sm:w-60 aspect-square rounded-full object-cover
+                    transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]
+                    motion-reduce:transition-none" />
+
+            <div class="absolute inset-0 rounded-full flex items-center justify-center
+                        bg-black/40 text-white text-xs sm:text-lg font-semibold
+                        opacity-0 transition duration-300
+                        group-hover:opacity-100 group-focus-within:opacity-100
+                        motion-reduce:transition-none">
+              Gerardo Espinosa
+            </div>
+          </div>
+        </button>
+      </li>
+      <!-- Analyst 3 -->
+      <li>
+        <button class="group relative flex flex-col items-center text-center focus:outline-none">
+          <div class="relative">
+            <img
+              src="assets/img/team/analysts/analyst3.webp"
+              alt="Fernando Aguilar"
+              class="w-40 sm:w-60 aspect-square rounded-full object-cover
+                    transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]
+                    motion-reduce:transition-none" />
+
+            <div class="absolute inset-0 rounded-full flex items-center justify-center
+                        bg-black/40 text-white text-xs sm:text-lg font-semibold
+                        opacity-0 transition duration-300
+                        group-hover:opacity-100 group-focus-within:opacity-100
+                        motion-reduce:transition-none">
+              Fernando Aguilar
+            </div>
+          </div>
+        </button>
+      </li>
+      <!-- Analyst 4 -->
+      <li>
+        <button class="group relative flex flex-col items-center text-center focus:outline-none">
+          <div class="relative">
+            <img
+              src="assets/img/team/analysts/analyst4.webp"
+              alt="Nicolás Steden"
+              class="relative w-40 sm:w-60 aspect-square rounded-full object-cover
+                    transition duration-300 group-hover:blur-[2px] group-focus-within:blur-[2px]
+                    motion-reduce:transition-none" />
+
+            <div class="absolute inset-0 rounded-full flex items-center justify-center
+                        bg-black/40 text-white text-xs sm:text-lg font-semibold
+                        opacity-0 transition duration-300
+                        group-hover:opacity-100 group-focus-within:opacity-100
+                        motion-reduce:transition-none">
+              Nicolás Steden
+            </div>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </div>
+</section>
 
   <!-- INVESTORS -->
 <section id="investors" class="py-16 bg-[#f6f4e5]" data-aos="fade-up">
